@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="https://www.inadm.com">
   <title>Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,7 +16,7 @@
   
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="https://www.inadm.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Patrick">
@@ -70,11 +70,13 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/" target="_blank">主页</a></li>
+				<li><a href="/" >主页</a></li>
 			
-				<li><a href="/tags/Linux-base" target="_blank">Linux base</a></li>
+				<li><a href="/tags/Linux-base" >Linux base</a></li>
 			
-				<li><a href="/tags/Linux-service" target="_blank">Linux service</a></li>
+				<li><a href="/tags/Linux-service" >Linux service</a></li>
+			
+				<li><a href="/tags/Server" >Server tools</a></li>
 			
 			</ul>
 		</nav>
@@ -92,13 +94,13 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" href="#" title="GitHub" target="_blank"><i class="icon-github"></i></a>
+					<a class="github" href="#" title="GitHub" ><i class="icon-github"></i></a>
 				
-					<a class="gitee" href="#" title="gitee" target="_blank"><i class="icon-gitee"></i></a>
+					<a class="gitee" href="#" title="gitee" ><i class="icon-gitee"></i></a>
 				
-					<a class="jianshu" href="#" title="jianshu" target="_blank"><i class="icon-jianshu"></i></a>
+					<a class="jianshu" href="#" title="jianshu" ><i class="icon-jianshu"></i></a>
 				
-					<a class="cnblog" href="#" title="cnblog" target="_blank"><i class="icon-cnblog"></i></a>
+					<a class="cnblog" href="#" title="cnblog" ><i class="icon-cnblog"></i></a>
 				
 			</div>
 		
@@ -140,6 +142,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -160,11 +164,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/Linux-base">Linux base</a></li>
+					<li style="width: 25%"><a href="/tags/Linux-base">Linux base</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/Linux-service">Linux service</a></li>
+					<li style="width: 25%"><a href="/tags/Linux-service">Linux service</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/Server">Server tools</a></li>
 		        
 				</ul>
 			</nav>
@@ -183,7 +189,7 @@
             
 
   
-    <article id="post-zimbra-邮箱部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-openvpn-搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -191,7 +197,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/06/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/">zimbra 邮箱部署</a>
+	  <a class="article-title" href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/">openvpn 搭建</a>
 	
     </h1>
   
@@ -199,8 +205,8 @@
 
   
   
-<a href="/2019/06/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-        <time datetime="2019-06-09T21:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
+<a href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+        <time datetime="2019-11-06T00:57:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
 </a>
 
   
@@ -209,8 +215,17 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>zimbra 邮箱部署</p>
-
+    <ul>
+<li><strong>OpenVPN 部署环境适用于办公室与企业IDC机房内网之间访问模式</strong><ul>
+<li>centos7 单机部署</li>
+<li>分为搭建、OpenVPN配置及证书文件生成、客户端安装配置</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/#more">more >></a>
+    
     
 
     
@@ -236,7 +251,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/">展开全文 >></a>
     </p>
     
 
@@ -266,7 +281,7 @@
 
 
   
-    <article id="post-vim" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-CHFS-文件共享" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -274,7 +289,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/06/08/vim/">vim</a>
+	  <a class="article-title" href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">chfs 文件共享</a>
 	
     </h1>
   
@@ -282,8 +297,8 @@
 
   
   
-<a href="/2019/06/08/vim/" class="archive-article-date">
-        <time datetime="2019-06-08T06:24:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-08</time>
+<a href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/" class="archive-article-date">
+        <time datetime="2019-10-29T16:48:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
 </a>
 
   
@@ -292,8 +307,13 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>Linux 基础</p>
-
+    <ul>
+<li><strong>CuteHttpFileServer/chfs是一个免费的、HTTP协议的文件共享服务器，使用浏览器可以快速访问</strong></li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/#more">more >></a>
+    
     
 
     
@@ -309,7 +329,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux-base</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
         		</li>
       		
 		</ul>
@@ -319,7 +339,753 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/06/08/vim/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-namedmanager-dns" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/05/namedmanager-dns/">namedmanager dns 搭建</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/05/namedmanager-dns/" class="archive-article-date">
+        <time datetime="2019-09-04T23:46:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
+</a>
+
+  
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>NamedManager 基于web的dns服务</strong></li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/09/05/namedmanager-dns/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/05/namedmanager-dns/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-jira-wiki" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/08/21/jira-wiki/">jira-wiki 搭建</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/08/21/jira-wiki/" class="archive-article-date">
+        <time datetime="2019-08-20T23:44:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
+</a>
+
+  
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>Jira 和 Confluence 一起部署安装</strong><ul>
+<li><a href="https://confluence.atlassian.com/doc/installing-confluence-on-linux-from-archive-file-255362363.html" target="_blank" rel="noopener">Confluence</a><ul>
+<li>信息可协同共享编辑、查看</li>
+<li>按空间分类分权,可阻隔跨部门能查看</li>
+</ul>
+</li>
+<li><a href="https://confluence.atlassian.com/adminjiraserver/installing-jira-applications-on-linux-from-archive-file-938846844.html" target="_blank" rel="noopener">Jira</a><ul>
+<li>适用于开发团队协作问题追踪、跟进管理</li>
+<li>按项目分类分权,实现不同部门拥有各自独立项目或公共项目等</li>
+<li>自定义工作流,实现不同环节流程流转到指定不同用户或组执行下一步工作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/08/21/jira-wiki/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/08/21/jira-wiki/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-openldap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/08/15/openldap/">openldap 搭建</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/08/15/openldap/" class="archive-article-date">
+        <time datetime="2019-08-14T23:43:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
+</a>
+
+  
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>OpenLDAP 统一管理用户认证应用系统</strong><ul>
+<li>可实现一个账号密码登陆各应用系统</li>
+<li>方便用户使用,方便运维维护管理</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/08/15/openldap/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/08/15/openldap/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-zimbra-邮箱部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/">zimbra 邮箱部署</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/" class="archive-article-date">
+        <time datetime="2019-08-09T21:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+</a>
+
+  
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>开源版 zimbra 邮箱部署</strong><ul>
+<li>zimbra 安装前准备</li>
+<li>zimbra 单机安装</li>
+<li>HTTPS 配置</li>
+<li>白名单设置</li>
+<li>阿里ecs申请放行25端口</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-cobler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/07/16/cobler/">cobbler 批量装机</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/07/16/cobler/" class="archive-article-date">
+        <time datetime="2019-07-15T23:49:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
+</a>
+
+  
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><p><strong>Cobbler 快速批量网络安装Centos 7 System</strong></p>
+<ul>
+<li>安装、配置、启服务</li>
+<li>导入ISO镜像系统文件</li>
+<li>定义kickstarts文件</li>
+<li>使用脚本实现系统批量一键安装</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/07/16/cobler/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/07/16/cobler/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ipmitool" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/06/21/ipmitool/">ipmitool 服务器管理工具</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/06/21/ipmitool/" class="archive-article-date">
+        <time datetime="2019-06-20T23:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-21</time>
+</a>
+
+  
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>IPMITool可远程管理物理服务器</strong><ul>
+<li>独立于系统、BIOS,是需要通电就可以远程开机关机、获取服务器硬件状态信息</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/06/21/ipmitool/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/06/21/ipmitool/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-linux-lvm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/06/21/linux-lvm/">lvm 磁盘管理工具</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/06/21/linux-lvm/" class="archive-article-date">
+        <time datetime="2019-06-20T23:20:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-21</time>
+</a>
+
+  
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>LVM Linux 磁盘管理工具</strong><ul>
+<li>逻辑扩展磁盘空间大小和缩减磁盘空间大小</li>
+<li>多个硬盘或者多个分区均可使用LVM卷组管理</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/06/21/linux-lvm/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/06/21/linux-lvm/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ansible" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/06/16/ansible/">ansible 自动化运维工具</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/06/16/ansible/" class="archive-article-date">
+        <time datetime="2019-06-15T23:55:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
+</a>
+
+  
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>Ansible 批量命令下发工具</strong><ul>
+<li>自动化运维工具</li>
+<li>无需Agent,管理节点直接远程SSH管理被管理节点</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
+    
+    <a class="article-more-a" href="/2019/06/16/ansible/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/06/16/ansible/">展开全文 >></a>
     </p>
     
 
@@ -350,6 +1116,10 @@
 
   
   
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
+  
 
 
           </div>
@@ -359,7 +1129,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019-2020 <a href="http://yoursite.com/" target="_blank">Patrick</a>
+    		&copy; 2019-2020 <a href="https://www.inadm.com/" target="_blank">Patrick</a>
     	</div>
       	<div class="footer-right">
 			
@@ -383,7 +1153,7 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/",
 		innerArchive: true,
 		showTags: true
@@ -447,6 +1217,10 @@
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux-base</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Server</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -497,7 +1271,7 @@
     	<section class="tools-section tools-section-me" q-show="aboutme">
         
           
-  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>Linux 基础、脚本、服务部署、虚拟化、<br>Linux 自动化、服务器硬件、<br>Windows 客户端,服务端的便捷应用、<br><br>联系QQ:772908976<br><br>所有人都想拯救世界,却没有人帮妈妈洗碗。<br></div>
+  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>Linux 基础、脚本、服务部署、虚拟化、<br>Linux 自动化、服务器硬件、<br>Windows 客户端,服务端的便捷应用、<br> 微信： xj_128520<br>  <br><br>所有人都想拯救世界,却没有人帮妈妈洗碗。<br></div>
   	  	
     	</section>
     

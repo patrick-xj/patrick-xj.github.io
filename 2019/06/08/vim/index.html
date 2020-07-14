@@ -5,20 +5,20 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>vim | Hexo</title>
+  <link rel="dns-prefetch" href="https://www.inadm.com">
+  <title>vim 使用技巧 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Linux 基础">
+  <meta name="description" content="vim 相关应用技巧 一般模式 末行模式 插入模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim">
-<meta property="og:url" content="http://yoursite.com/2019/06/08/vim/index.html">
+<meta property="og:title" content="vim 使用技巧">
+<meta property="og:url" content="https://www.inadm.com/2019/06/08/vim/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Linux 基础">
+<meta property="og:description" content="vim 相关应用技巧 一般模式 末行模式 插入模式">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-06-08T06:24:26.000Z">
-<meta property="article:modified_time" content="2020-06-19T21:15:15.746Z">
+<meta property="article:published_time" content="2019-06-07T17:24:26.000Z">
+<meta property="article:modified_time" content="2020-07-14T08:08:12.436Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Linux-base">
 <meta name="twitter:card" content="summary">
@@ -71,11 +71,13 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/" target="_blank">主页</a></li>
+				<li><a href="/" >主页</a></li>
 			
-				<li><a href="/tags/Linux-base" target="_blank">Linux base</a></li>
+				<li><a href="/tags/Linux-base" >Linux base</a></li>
 			
-				<li><a href="/tags/Linux-service" target="_blank">Linux service</a></li>
+				<li><a href="/tags/Linux-service" >Linux service</a></li>
+			
+				<li><a href="/tags/Server" >Server tools</a></li>
 			
 			</ul>
 		</nav>
@@ -93,13 +95,13 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" href="#" title="GitHub" target="_blank"><i class="icon-github"></i></a>
+					<a class="github" href="#" title="GitHub" ><i class="icon-github"></i></a>
 				
-					<a class="gitee" href="#" title="gitee" target="_blank"><i class="icon-gitee"></i></a>
+					<a class="gitee" href="#" title="gitee" ><i class="icon-gitee"></i></a>
 				
-					<a class="jianshu" href="#" title="jianshu" target="_blank"><i class="icon-jianshu"></i></a>
+					<a class="jianshu" href="#" title="jianshu" ><i class="icon-jianshu"></i></a>
 				
-					<a class="cnblog" href="#" title="cnblog" target="_blank"><i class="icon-cnblog"></i></a>
+					<a class="cnblog" href="#" title="cnblog" ><i class="icon-cnblog"></i></a>
 				
 			</div>
 		
@@ -141,6 +143,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -161,11 +165,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/Linux-base">Linux base</a></li>
+					<li style="width: 25%"><a href="/tags/Linux-base">Linux base</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/Linux-service">Linux service</a></li>
+					<li style="width: 25%"><a href="/tags/Linux-service">Linux service</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/Server">Server tools</a></li>
 		        
 				</ul>
 			</nav>
@@ -188,7 +194,7 @@
   
   
     <h1 class="article-title" itemprop="name">
-      vim
+      vim 使用技巧
     </h1>
   
 
@@ -196,7 +202,7 @@
   
   
 <a href="/2019/06/08/vim/" class="archive-article-date">
-        <time datetime="2019-06-08T06:24:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-08</time>
+        <time datetime="2019-06-07T17:24:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-08</time>
 </a>
 
   
@@ -205,7 +211,21 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>Linux 基础</p>
+    <ul>
+<li><strong>vim 相关应用技巧</strong><ul>
+<li>一般模式</li>
+<li>末行模式</li>
+<li>插入模式<h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
+
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><figcaption><span>一般模式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 光标跳转</span></span><br><span class="line">	h				<span class="comment"># 左</span></span><br><span class="line">	l				<span class="comment"># 右</span></span><br><span class="line">	j				<span class="comment"># 下</span></span><br><span class="line">	k				<span class="comment"># 上</span></span><br><span class="line"><span class="comment"># 单词间跳转</span></span><br><span class="line">	w				<span class="comment"># 下一个单词词首</span></span><br><span class="line">	e				<span class="comment"># 当前单词或下一个单词词尾</span></span><br><span class="line">	b				<span class="comment"># 返回到当前单词或下一个单词词首</span></span><br><span class="line"><span class="comment"># 句子间跳转</span></span><br><span class="line">	)				<span class="comment"># 下一句</span></span><br><span class="line">	(				<span class="comment"># 前一句</span></span><br><span class="line"><span class="comment"># 段落间跳转</span></span><br><span class="line">	&#125;				<span class="comment"># 下一段</span></span><br><span class="line">	&#123;				<span class="comment"># 前一段</span></span><br><span class="line"><span class="comment"># 行间跳转</span></span><br><span class="line">	gg				<span class="comment"># 跳转至开头;等同于1G</span></span><br><span class="line">	G				<span class="comment"># shift+G,跳转至行尾</span></span><br><span class="line">	H				<span class="comment"># 光标移动到当前页第一行的第一个字符</span></span><br><span class="line">	M				<span class="comment"># 光标移动到当前页的中央的第一个字符</span></span><br><span class="line">	L				<span class="comment"># 光标移动到当前页的最后行第一个字符</span></span><br><span class="line"><span class="comment"># 行内跳转</span></span><br><span class="line"> 	^				<span class="comment"># 所在行的行首;第一个非空白字符</span></span><br><span class="line"> 	$				<span class="comment"># 所在行的绝对行尾</span></span><br><span class="line"> 	0				<span class="comment"># 所在行的绝对行首</span></span><br><span class="line"><span class="comment"># 快捷键使用</span></span><br><span class="line">	u        			<span class="comment"># 撤销</span></span><br><span class="line">	Ctrl + r 			<span class="comment"># 反撤销</span></span><br><span class="line">	2+&lt;space&gt;			<span class="comment"># 光标向后移动2个字符</span></span><br><span class="line"><span class="comment"># 搜索</span></span><br><span class="line">    /word 			 	<span class="comment"># 光标所在字符向下查找word字符</span></span><br><span class="line">    ？word 				<span class="comment"># 光标所在字符向上查找word字符</span></span><br><span class="line">        n 			 	<span class="comment"># 重复前一个查找动作</span></span><br><span class="line">        N 			 	<span class="comment"># 与n相反进行查找</span></span><br><span class="line"><span class="comment"># 新增</span></span><br><span class="line">	o				<span class="comment"># 向下新增一行</span></span><br><span class="line">	O				<span class="comment"># 向上新增一行</span></span><br><span class="line">	x				<span class="comment"># 向后删除一个字符</span></span><br><span class="line">	X				<span class="comment"># 向前删除一个字符</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">	x  				<span class="comment"># 删除单个字符</span></span><br><span class="line">	2x 				<span class="comment"># 删除光标所在向3个字符</span></span><br><span class="line">	dw 				<span class="comment"># 删除当前光标所在单词并跳至下一个单词词首</span></span><br><span class="line">	dd 				<span class="comment"># 删除光标所在行</span></span><br><span class="line">	5dd				<span class="comment"># 删除光标所在行并向下5行</span></span><br><span class="line">	d$ 				<span class="comment"># 删除光标所在字符到行结尾</span></span><br><span class="line">	d0 				<span class="comment"># 删除光标所在字符到绝对行首</span></span><br><span class="line">	d^ 				<span class="comment"># 删除光标所在字符到行首首字符处</span></span><br><span class="line"><span class="comment"># 复制</span></span><br><span class="line">	yy 				<span class="comment"># 复制光标所在行</span></span><br><span class="line">	5yy				<span class="comment"># 复制光标所在行向下的5行</span></span><br><span class="line">	 . 				<span class="comment"># 重复前一个动作</span></span><br><span class="line">	p  				<span class="comment"># 将复制的数据粘贴到光标所在的下一行</span></span><br><span class="line">	P  				<span class="comment"># 将复制的数据粘贴到光标所在的上一行</span></span><br><span class="line">	r  				<span class="comment"># 只会取代光标所在的单个字符</span></span><br><span class="line">	R  				<span class="comment"># 一直取代光标所在的字符,知道结尾</span></span><br><span class="line"><span class="comment"># 区块选项</span></span><br><span class="line">	v        			<span class="comment"># 字符选择;配合左右键使用</span></span><br><span class="line">	V        			<span class="comment"># 选择行;配合上下键使用</span></span><br><span class="line">	Ctrl + v 			<span class="comment"># 选择区块;配合上下左右键使用</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>末行模式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 末行模式下</span></span><br><span class="line">	:w                        <span class="comment"># 保存</span></span><br><span class="line">	:q                        <span class="comment"># 退出</span></span><br><span class="line">	:!                        <span class="comment"># 强制</span></span><br><span class="line">	:x                        <span class="comment"># 保存退出</span></span><br><span class="line">	:qall                     <span class="comment"># 退出所有</span></span><br><span class="line">	:1,7d                     <span class="comment"># 删除1到7行</span></span><br><span class="line">	%d                        <span class="comment"># 删除所有行</span></span><br><span class="line">	:<span class="built_in">set</span> all                  <span class="comment"># 显示目前所有环节参数指定值</span></span><br><span class="line">	:<span class="built_in">set</span> nu                   <span class="comment"># 显示行号</span></span><br><span class="line">	:<span class="built_in">set</span> nonu                 <span class="comment"># 取消行号显示</span></span><br><span class="line">	:<span class="built_in">set</span> backup               <span class="comment"># 自动备份文件,源文件另存为file~</span></span><br><span class="line">	:syntax on                <span class="comment"># 显示颜色</span></span><br><span class="line">	:syntax off               <span class="comment"># 取消颜色显示</span></span><br><span class="line">	:<span class="built_in">set</span> paste                <span class="comment"># 不会自动缩进;纯粘贴模式</span></span><br><span class="line">	:<span class="built_in">set</span> nopaste              <span class="comment"># 自动缩进,取消纯粘贴模式</span></span><br><span class="line"><span class="comment"># 替换、插入</span></span><br><span class="line">	:5,<span class="variable">$s</span>/<span class="built_in">test</span>/1234/g         <span class="comment"># 从第5行到最后一行将test替换为1234</span></span><br><span class="line">	:5,<span class="variable">$s</span>/<span class="built_in">test</span>/1234/gc        <span class="comment"># 每一个替换字符确认是否替换</span></span><br><span class="line">	:%s/|//g                  <span class="comment"># 删除所有|字符</span></span><br><span class="line">	:%s/\s/|/g                <span class="comment"># 所有空格转换为|</span></span><br><span class="line">	:%s/^/|/g                 <span class="comment"># 每行行首字符前添加|</span></span><br><span class="line">	:%s/$/|/g                 <span class="comment"># 每行行尾字符后添加|</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>插入模式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入配置文件</span></span><br><span class="line">vim [options] file_name</span><br><span class="line">    +5                            <span class="comment"># 表示直接打开文件后到第5行</span></span><br><span class="line">vim [options] file1 file2 ...     <span class="comment"># 一次打开多个文件</span></span><br><span class="line">    :next                         <span class="comment"># 跳转到下一个文件</span></span><br><span class="line">    :first                        <span class="comment"># 回到第一个文件</span></span><br><span class="line">    :last                         <span class="comment"># 调到最后一个</span></span><br><span class="line">    :prev                         <span class="comment"># 返回到前一个</span></span><br><span class="line">vim [options] file1 file2 ...   </span><br><span class="line">    -o                            <span class="comment"># 一次将多个文件打开横向显示</span></span><br><span class="line">    -O                            <span class="comment"># 一次性将多个文件竖立显示</span></span><br><span class="line">    <span class="comment"># Control + w 松开 然后按上下左右跳转至下一界面</span></span><br></pre></td></tr></table></figure>
 
     
 
@@ -220,7 +240,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2019/06/08/vim/" title="vim" target="_blank">http://yoursite.com/2019/06/08/vim/</a>
+          <a href="https://www.inadm.com/2019/06/08/vim/" title="vim 使用技巧" target="_blank">https://www.inadm.com/2019/06/08/vim/</a>
         </li>
         
         <li>
@@ -261,11 +281,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/06/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/08/command/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          zimbra 邮箱部署
+          command 基础命令
         
       </div>
     </a>
@@ -310,7 +330,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019-2020 <a href="http://yoursite.com/" target="_blank">Patrick</a>
+    		&copy; 2019-2020 <a href="https://www.inadm.com/" target="_blank">Patrick</a>
     	</div>
       	<div class="footer-right">
 			
@@ -334,7 +354,7 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/",
 		innerArchive: true,
 		showTags: true
@@ -398,6 +418,10 @@
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux-base</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Server</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -448,7 +472,7 @@
     	<section class="tools-section tools-section-me" q-show="aboutme">
         
           
-  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>Linux 基础、脚本、服务部署、虚拟化、<br>Linux 自动化、服务器硬件、<br>Windows 客户端,服务端的便捷应用、<br><br>联系QQ:772908976<br><br>所有人都想拯救世界,却没有人帮妈妈洗碗。<br></div>
+  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>Linux 基础、脚本、服务部署、虚拟化、<br>Linux 自动化、服务器硬件、<br>Windows 客户端,服务端的便捷应用、<br> 微信： xj_128520<br>  <br><br>所有人都想拯救世界,却没有人帮妈妈洗碗。<br></div>
   	  	
     	</section>
     
