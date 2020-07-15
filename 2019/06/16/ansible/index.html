@@ -18,7 +18,7 @@
 <meta property="og:description" content="Ansible 批量命令下发工具 自动化运维工具 无需Agent,管理节点直接远程SSH管理被管理节点">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-06-15T23:55:47.000Z">
-<meta property="article:modified_time" content="2020-07-14T08:07:31.942Z">
+<meta property="article:modified_time" content="2020-07-15T18:47:22.866Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Server">
 <meta name="twitter:card" content="summary">
@@ -226,7 +226,7 @@
 <h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
 
 <ol>
-<li><strong>Ansible 配置文件</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/ansible/ansible.cfg </span><br><span class="line">    <span class="comment">#inventory      = /etc/ansible/hosts         # 资源清单</span></span><br><span class="line">    <span class="comment">#library        = /usr/share/my_modules/     # 指向存放ansible模块的目录。支持多目录方式，使用（:）隔开</span></span><br><span class="line">    <span class="comment">#forks          = 5                          # 默认最多5个进程并行处理</span></span><br><span class="line">    <span class="comment">#sudo_user      = root                       # 默认执行目录的用户，也可以在playbook中重新设置这个参数</span></span><br><span class="line">    remote_port    = 22                          <span class="comment"># 默认被连接管节点</span></span><br><span class="line">    host_key_checking = True                     <span class="comment"># 是否检查SSH主机密钥;True不检查、False检查</span></span><br><span class="line">    timeout = 10                                 <span class="comment"># SSH连接超时间隔，单位秒</span></span><br><span class="line">    log_path = /var/<span class="built_in">log</span>/ansible.log              <span class="comment"># 默认系统不记录日志。执行ansible用户需有写入日志权限</span></span><br></pre></td></tr></table></figure>
+<li><strong>Ansible 配置文件</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/ansible/ansible.cfg </span><br><span class="line">    <span class="comment">#inventory      = /etc/ansible/hosts         # 资源清单</span></span><br><span class="line">    <span class="comment">#library        = /usr/share/my_modules/     # 指向存放ansible模块的目录。支持多目录方式，使用（:）隔开</span></span><br><span class="line">    <span class="comment">#forks          = 5                          # 默认最多5个进程并行处理</span></span><br><span class="line">    <span class="comment">#sudo_user      = root                       # 默认执行目录的用户，也可以在playbook中重新设置这个参数</span></span><br><span class="line">    remote_port    = 22                          <span class="comment"># 默认被连接管节点</span></span><br><span class="line">    host_key_checking = True                     <span class="comment"># 是否检查SSH主机密钥;True检查、False不检查</span></span><br><span class="line">    timeout = 10                                 <span class="comment"># SSH连接超时间隔，单位秒</span></span><br><span class="line">    log_path = /var/<span class="built_in">log</span>/ansible.log              <span class="comment"># 默认系统不记录日志。执行ansible用户需有写入日志权限</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -257,7 +257,8 @@
 <figure class="highlight bash"><figcaption><span>setup 模块</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 主要用于获取主机信息，playbooks里经常会用的另一个参数gather_facts与该模块相关</span></span><br><span class="line">  setup模块下经常用的是filter参数</span><br><span class="line"><span class="comment"># filter过滤所需信息</span></span><br><span class="line">ansible other -k -m setup</span><br><span class="line">ansible other -k -m setup|grep ansible_user_uid</span><br><span class="line">ansible other -k -m setup -a <span class="string">'filter=ansible_user_uid'</span></span><br></pre></td></tr></table></figure>
 
 
-<h6 id="-4"><a href="#-4" class="headerlink" title=""></a></h6>
+<p>######</p>
+
     
 
     
