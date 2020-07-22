@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="PERCCLI 工具适用于戴尔服务器 适用于Linux 7 OS">
+  <meta name="description" content="戴尔服务器管理工具 perccli 戴尔RAID管理工具 iDRAC 戴尔管理平台工具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="perccli 戴尔服务器管理工具">
 <meta property="og:url" content="https://www.inadm.com/2019/06/15/perccli/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="PERCCLI 工具适用于戴尔服务器 适用于Linux 7 OS">
+<meta property="og:description" content="戴尔服务器管理工具 perccli 戴尔RAID管理工具 iDRAC 戴尔管理平台工具">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-06-14T23:33:55.000Z">
-<meta property="article:modified_time" content="2020-07-14T08:07:50.927Z">
+<meta property="article:modified_time" content="2020-07-22T03:49:36.943Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Server">
 <meta name="twitter:card" content="summary">
@@ -217,36 +217,68 @@
   <div class="article-entry" itemprop="articleBody">
     
     <ul>
-<li><strong>PERCCLI 工具适用于戴尔服务器</strong><ul>
-<li>适用于Linux 7 OS</li>
+<li><strong>戴尔服务器管理工具</strong><ul>
+<li>perccli 戴尔RAID管理工具</li>
+<li>iDRAC 戴尔管理平台工具 </li>
 </ul>
 </li>
 </ul>
 <h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
 
 <ul>
-<li><strong>perccli 工具获取和安装</strong></li>
+<li>1.1 <strong>perccli 工具获取和安装</strong></li>
 </ul>
 <figure class="highlight bash"><figcaption><span>获取安装包</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 戴尔官网使用SN查询选项驱动程序下载</span></span><br><span class="line">    关键字：PERCCLI            操作系统：Red Hat E... Linux7</span><br><span class="line">    类别：SAS RAID             格式：全部</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh &lt;percli-x.xx-x.noarch.rpm&gt; 或 rpm -iUh &lt;percli-x.xx-x.noarch.rpm&gt; </span><br><span class="line">/opt/MegaRAID/perccli</span><br><span class="line">ln -s /opt/MegaRAID/perccli/perccli64 /bin/perccli</span><br></pre></td></tr></table></figure>
 
 <h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><ul>
-<li><strong>RAID 配置</strong></li>
+<li>1.2 <strong>RAID 配置</strong></li>
 </ul>
 <figure class="highlight bash"><figcaption><span>Raid 0 配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">perccli /c0/eall/sall show                               <span class="comment"># 查看在线模式硬盘</span></span><br><span class="line">perccli /c0 add vd r0 drives=32:5 wb ra                  <span class="comment"># 配置32:5此单块盘为raid0，读写模式wb ra</span></span><br><span class="line">perccli /c0/eall/sall show                               <span class="comment"># 查看在线模式硬盘</span></span><br><span class="line">perccli /c0/v2 delete                                    <span class="comment"># 删除raid v2，raid0配置</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>Raid 1 配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">perccli /c0 add vd r1 drives=32:5,6 wb ra                <span class="comment"># 创建raid1</span></span><br><span class="line">perccli /c0/vall show                                    <span class="comment"># 查看raid配置信息</span></span><br><span class="line">perccli /c0/v2 delete                                    <span class="comment"># 删除raid v2，raid1配置</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建RAID-1分2个分区</span></span><br><span class="line"><span class="comment"># perccli /c0 add vd r1 [size=&lt;VD1_sz&gt;,&lt;VD2_sz&gt;,..|all] drives=e:s|e:s-x|e:s-x,y,e:s-x,y,z wb ra</span></span><br><span class="line">perccli /c0 add vd r1 size=200G drives=32:0,1 wb ra      <span class="comment"># 创建raid1第一个分区200G</span></span><br><span class="line">perccli /c0 add vd r1 Size=all drives=32:0-1 wb ra       <span class="comment"># raid1剩余空间全部划分单独分区</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>Raid 5 配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perccli /c0 add vd r5 drives=32:5-7 wb ra                <span class="comment"># 创建raid5 &lt;需最少3块盘&gt;</span></span><br><span class="line">perccli /c0/vall show                                    <span class="comment"># 查看raid配置信息</span></span><br><span class="line">perccli /c0/v2 delete                                    <span class="comment"># 删除raid v2，raid5配置</span></span><br></pre></td></tr></table></figure>
 <h6 id="-2"><a href="#-2" class="headerlink" title=""></a></h6><ul>
-<li><strong>JBOD 直通模式配置</strong></li>
+<li>1.3 <strong>JBOD 直通模式配置</strong></li>
 </ul>
 <figure class="highlight bash"><figcaption><span>JBOD模式配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">perccli /c0 show jbod                                    <span class="comment"># 查看直通模式是否开启</span></span><br><span class="line">perccli /c0 <span class="built_in">set</span> jbod=on                                  <span class="comment"># 开启直通模式</span></span><br><span class="line">perccli /c0/eall/sall show                               <span class="comment"># 查看有哪些磁盘为在线模式</span></span><br><span class="line">perccli /c0/e32/s5 <span class="built_in">set</span> jbod                              <span class="comment"># 配置为此块磁盘为直通模式</span></span><br><span class="line">perccli /c0/e32/s10 <span class="built_in">set</span> good force                       <span class="comment"># 强制设置为在线模式</span></span><br></pre></td></tr></table></figure>
 
 <h6 id="-3"><a href="#-3" class="headerlink" title=""></a></h6><ul>
-<li><strong>其它命令</strong></li>
+<li>1.4 <strong>其它命令</strong></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">perccli show ctrlcount                                   <span class="comment"># 查看控制器数量</span></span><br><span class="line">perccli /c0/eall/sall show                               <span class="comment"># 查看物理硬盘信息</span></span><br><span class="line">perccli /c0/vall show                                    <span class="comment"># 查信RAID配置信息</span></span><br><span class="line">perccli /c0/fall show all                                <span class="comment"># 查看脱机硬盘信息</span></span><br><span class="line">perccli /c0 show jbod                                    <span class="comment"># 查看直通模式状态和是否启用&lt;ON为启用，OFF未关闭&gt;</span></span><br><span class="line">perccli /c0 <span class="built_in">set</span> jbod=off force                           <span class="comment"># 强制配置为关闭直通模式</span></span><br><span class="line">perccli /c0 show bios                                    <span class="comment"># 查看BIOS启动模式</span></span><br><span class="line">perccli /c0 show preservedcache                          <span class="comment"># 查看硬盘是否有缓存信息</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="-4"><a href="#-4" class="headerlink" title=""></a></h6>
+<h6 id="-4"><a href="#-4" class="headerlink" title=""></a></h6><ul>
+<li><p><strong><font size=4>iDRAC 戴尔管理平台工具</font></strong></p>
+</li>
+<li><p>2.1 <strong>iDRAC 工具获取和安装</strong></p>
+</li>
+</ul>
+<figure class="highlight bash"><figcaption><span>安装iDRAC工具包</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://downloads.dell.com/FOLDER04651962M/1/OM-MgmtStat-Dell-Web-LX-9.1.0-2771_A00.tar.gz	<span class="comment"># 软件包地址</span></span><br><span class="line">tar -zxf OM-MgmtStat-Dell-Web-LX-9.1.0-2771_A00.tar.gz</span><br><span class="line"><span class="built_in">cd</span> linux/rac/RHEL7/x86_64/</span><br><span class="line">yum -y install net-snmp-utils pciutils</span><br><span class="line">rpm -ivh *.rpm --nodeps --force</span><br><span class="line">ln -s /opt/dell/srvadmin/sbin/racadm /bin/racadm</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>远程访问和本地登录交互式运行命令方式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">racadm  -r <span class="string">'IDRAC_IP'</span> -u <span class="string">'IDRAC_USER'</span> -p <span class="string">'IDRAC_PASS'</span> serveraction powerstatus	<span class="comment"># 远程执行方式</span></span><br><span class="line">racadm serveraction powerstatus 						<span class="comment"># 本地交互式执行方式</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="-5"><a href="#-5" class="headerlink" title=""></a></h6><p>2.2 <strong>iDRAC 开关机物理机操作</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看</span></span><br><span class="line">racadm serveraction powerstatus                          <span class="comment"># 查看服务器状态</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开关机</span></span><br><span class="line">racadm serveraction powerup                              <span class="comment"># 开启服务器</span></span><br><span class="line">racadm serveraction powerdown                            <span class="comment"># 关闭服务器</span></span><br><span class="line">racadm serveraction powercycle                           <span class="comment"># 关机后再开机</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="-6"><a href="#-6" class="headerlink" title=""></a></h6><p>2.3 <strong>iDRAC 管理口重启</strong></p>
+<figure class="highlight bash"><figcaption><span>管理平台网口重启命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">racadm racreset soft                                     <span class="comment"># 软重启iDRAC</span></span><br><span class="line">racadm racreset hard                                     <span class="comment"># 硬重启iDRAC</span></span><br><span class="line">racadm racreset soft -f                                  <span class="comment"># 强制软重启iDRAC</span></span><br><span class="line">racadm racreset hard -f                                  <span class="comment"># 强制硬重启iDRAC</span></span><br></pre></td></tr></table></figure>
+
+
+<h6 id="-7"><a href="#-7" class="headerlink" title=""></a></h6><p>2.4 <strong>iDRAC 命令执行方式</strong></p>
+<figure class="highlight bash"><figcaption><span>iDRAC 用户设置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询</span></span><br><span class="line">racadm getconfig -u &lt;UserName&gt;                                                <span class="comment"># 查找某个用户是否存在</span></span><br><span class="line">racadm getconfig -g cfgUserAdmin -i 2                                         <span class="comment"># 查看用户参数信息&lt;索引号'2'为root用户&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建用户</span></span><br><span class="line">racadm config -g cfgUserAdmin -o cfgUserAdminUserName -i &lt;索引&gt; &lt;用户名&gt;       <span class="comment"># 创建用户</span></span><br><span class="line">racadm config -g cfgUserAdmin -o cfgUserAdminPassword -i &lt;索引&gt; &lt;<span class="string">"密码"</span>&gt;       <span class="comment"># 给用户名设置密码</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 权限</span></span><br><span class="line">racadm config -g cfgUserAdmin -o cfgUserAdminPrivilege -i &lt;索引&gt; &lt;权限&gt;        <span class="comment"># 0表示所有权限；2表示User;3表示操作权限；4管理员权限；15无访问权限； 待确认权限</span></span><br><span class="line">racadm <span class="built_in">set</span> idrac.users.15.Privilege 0x1ff                                     <span class="comment"># 设置为管理员 </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">racadm <span class="built_in">set</span> iDRAC.Users.2.Password <span class="string">'calvin'</span>                                    <span class="comment"># 更改用户密码</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁用、启用</span></span><br><span class="line">racadm config -g cfgUserAdmin -i 10 -o cfgUserAdminEnable 1                    <span class="comment"># 启用用户；1启用、0禁用</span></span><br><span class="line">racadm <span class="built_in">set</span> idrac.users.15.enable enabled                                       <span class="comment"># 启用用户</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">racadm config -g cfgUserAdmin -o cfgUserAdminUserName -i 3 <span class="string">""</span>                  <span class="comment"># 删除用户</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 
     
@@ -449,11 +481,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Server</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linux-service</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linux-service</a>
+                <a href="javascript:void(0)" class="js-tag color2">Server</a>
               </li>
              
               <li class="article-tag-list-item">
