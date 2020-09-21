@@ -6,16 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.inadm.com">
-  <title>Archives: 2019 | INADM</title>
+  <title>yum 服务器部署 | INADM</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="INADM">
-<meta property="og:url" content="https://www.inadm.com/archives/2019/index.html">
+  <meta name="description" content="YUM 源服务器部署 YUM 源服务器搭建 YUM 客户端repo    搭建IDC企业内网YUM源服务器。客户端无需在向外网获取安装包本文仅介绍centos7源获取,其它系统获取方式基本类似">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yum 服务器部署">
+<meta property="og:url" content="https://www.inadm.com/2019/12/08/yum-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="INADM">
+<meta property="og:description" content="YUM 源服务器部署 YUM 源服务器搭建 YUM 客户端repo    搭建IDC企业内网YUM源服务器。客户端无需在向外网获取安装包本文仅介绍centos7源获取,其它系统获取方式基本类似">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-08T13:15:02.000Z">
+<meta property="article:modified_time" content="2020-08-29T17:54:55.746Z">
 <meta property="article:author" content="Patrick">
+<meta property="article:tag" content="Linux-service">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="INADM" type="application/atom+xml">
@@ -198,84 +203,93 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-yum-服务器部署" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-        <time datetime="2019-12-08T13:35:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/">ntp 服务部署</a>
-	
+    <h1 class="article-title" itemprop="name">
+      yum 服务器部署
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+  
 <a href="/2019/12/08/yum-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" class="archive-article-date">
         <time datetime="2019-12-08T13:15:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
 </a>
 
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/12/08/yum-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/">yum 服务器部署</a>
-	
-    </h1>
   
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>YUM 源服务器部署</strong><ul>
+<li>YUM 源服务器搭建</li>
+<li>YUM 客户端repo</li>
+</ul>
+</li>
+</ul>
+<p><font size=2>搭建IDC企业内网YUM源服务器。客户端无需在向外网获取安装包<br>本文仅介绍centos7源获取,其它系统获取方式基本类似</font></p>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
 
+<p>1.1 <strong>YUM 服务端基础配置</strong></p>
+<p><font size=2></font></p>
+<figure class="highlight bash"><figcaption><span>rpm包数据存储路径及相关包安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkdir -p /data/www/repos/centos/&#123;6,7,8&#125;/&#123;os,updates,extras,centosplus&#125;/x86_64</span></span><br><span class="line"><span class="comment"># mkdir -p /data/www/repos/epel/&#123;6,7,8&#125;/x86_64</span></span><br><span class="line"><span class="comment"># chmod -R 755 /data/www/repos</span></span><br><span class="line"><span class="comment"># yum -y install rsync httpd createrepo</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
+<p>1.2 <strong>YUM 获取centos官方包</strong></p>
+<figure class="highlight bash"><figcaption><span>获取CentOS rpm官方包</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 同步centos官方包到本地</span><br><span class="line"><span class="comment"># rsync -avzP --delete --exclude='repodata' rsync://rsync.mirrors.ustc.edu.cn/centos/7/os/x86_64/ /data/www/repos/centos/7/os/x86_64/</span></span><br><span class="line"><span class="comment"># rsync -avzP --delete --exclude='repodata' rsync://rsync.mirrors.ustc.edu.cn/centos/7/updates/x86_64/ /data/www/repos/centos/7/updates/x86_64/</span></span><br><span class="line"><span class="comment"># rsync -avzP --delete --exclude='repodata' rsync://rsync.mirrors.ustc.edu.cn/centos/7/extras/x86_64/ /data/www/repos/centos/7/extras/x86_64/</span></span><br><span class="line"><span class="comment"># rsync -avzP --delete --exclude='repodata' rsync://rsync.mirrors.ustc.edu.cn/centos/7/centosplus/x86_64/ /data/www/repos/centos/7/centosplus/x86_64/</span></span><br><span class="line">    -a          归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD</span><br><span class="line">    -v          详细模式输出</span><br><span class="line">    -z          对备份的文件在传输时进行压缩处理</span><br><span class="line">    --dalete    删除那些DST中SRC没有的文件</span><br><span class="line">    --exclude   指定排除不需要传输的文件模式</span><br><span class="line"></span><br><span class="line">// 同步epel包到本地</span><br><span class="line"><span class="comment"># rsync -avzP --delete --exclude='repodata' rsync://rsync.mirrors.ustc.edu.cn/epel/7/x86_64/ /data/www/repos/epel/7/x86_64</span></span><br></pre></td></tr></table></figure>
+<p>1.3 <strong>创建rpm包仓库的库文件</strong></p>
+<figure class="highlight bash"><figcaption><span>创建repodate数据库文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 客户端获取服务端数据,首先是通过数据库文件找到所需要的rpm包,然后库文件调出指定rpm包交给客户端</span><br><span class="line"><span class="comment"># createrepo /data/www/repos/centos/7/os/x86_64/</span></span><br><span class="line"><span class="comment"># createrepo /data/www/repos/centos/7/updates/x86_64/</span></span><br><span class="line"><span class="comment"># createrepo /data/www/repos/centos/7/extras/x86_64/</span></span><br><span class="line"><span class="comment"># createrepo /data/www/repos/centos/7/centosplus/x86_64/</span></span><br><span class="line"><span class="comment"># createrepo /data/www/repos/epel/7/x86_64/</span></span><br></pre></td></tr></table></figure>
+<p>1.4 <strong>服务端定时更新官方rpm包源</strong></p>
+<figure class="highlight bash"><figcaption><span>每天定期拉取脚本</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/cron.daily/update-repo</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">VER=<span class="string">'7'</span></span><br><span class="line">ARCH=<span class="string">'x86_64'</span></span><br><span class="line">REPOS=(os updates extras centosplus)</span><br><span class="line"><span class="keyword">for</span> REPO <span class="keyword">in</span> <span class="variable">$&#123;REPOS[@]&#125;</span>; <span class="keyword">do</span></span><br><span class="line">   rsync -avz --delete --exclude=<span class="string">'repodata'</span> \</span><br><span class="line">   rsync://rsync.mirrors.ustc.edu.cn/centos/<span class="variable">$&#123;VER&#125;</span>/<span class="variable">$&#123;REP&#125;</span>/&#125;/<span class="variable">$&#123;ARCH&#125;</span>/ /data/www/repos/centos/<span class="variable">$&#123;VER&#125;</span>/<span class="variable">$&#123;REPO&#125;</span>/<span class="variable">$&#123;ARCH&#125;</span>/</span><br><span class="line">   createrepo /data/www/repos/centos/<span class="variable">$&#123;VER&#125;</span>/<span class="variable">$&#123;REPO&#125;</span>/$&#123;ARCHO</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">rsync -avz --delete --exclude=<span class="string">'repodata'</span> rsync://rsync.mirrors.ustc.edu.cn/epel/<span class="variable">$&#123;VER&#125;</span>/<span class="variable">$&#123;ARCH&#125;</span>/ /data/www/repos/epel/7/x86_64/</span><br><span class="line"></span><br><span class="line"><span class="comment"># chmod 755 /etc/cron.daily/update-repo</span></span><br></pre></td></tr></table></figure>
+<p>1.5 <strong>NGINX 配置</strong></p>
+<figure class="highlight bash"><figcaption><span>nginx配置http走80端口</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 客户端通过http 80端口拉取数据</span><br><span class="line"><span class="comment"># yum -y install nginx</span></span><br><span class="line"><span class="comment"># vim /etc/nginx/conf/nginx.conf</span></span><br><span class="line">...</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  yum.inadm.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root /data/www;</span><br><span class="line">        autoindex on;</span><br><span class="line">        autoindex_localtime on;</span><br><span class="line">        autoindex_exact_size off;</span><br><span class="line">        charset utf-8,gbk;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># systemctl start nginx &amp;&amp; systemctl enable nginx</span></span><br></pre></td></tr></table></figure>
+
+<p>2.1 <strong>YUM 客户端repo</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkdir -p /etc/yum.repos.d/bak</span></span><br><span class="line"><span class="comment"># mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/bak</span></span><br><span class="line">// 将下面2个仓库文件放到/etc/yum.repos.d/目录下</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>centos repo仓库文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/yum.repos.d/CentOS-Base.repo</span></span><br><span class="line">[base]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - Base</span><br><span class="line">baseurl=http://yum.inadm.com/repos/centos/<span class="variable">$releasever</span>/os/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">[updates]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - Updates</span><br><span class="line">baseurl=http://yum.inadm.com/repos/centos/<span class="variable">$releasever</span>/updates/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">[extras]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - Extras</span><br><span class="line">baseurl=http://yum.inadm.com/repos/centos/<span class="variable">$releasever</span>/extras/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">[centosplus]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - centosplus</span><br><span class="line">baseurl=http://yum.inadm.com/repos/centos/<span class="variable">$releasever</span>/centosplus/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>centos epel仓库文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/yum.repos.d/epel.repo</span></span><br><span class="line">[epel]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - epel</span><br><span class="line">baseurl=http://yum.inadm.com/repos/epel/<span class="variable">$releasever</span>/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>客户端获取服务端源缓存信息</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum clean all &amp;&amp; rm -rf /var/cache/yum/* &amp;&amp; yum repolist</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6>
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Patrick
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://www.inadm.com/2019/12/08/yum-服务器部署/" title="yum 服务器部署" target="_blank">https://www.inadm.com/2019/12/08/yum-服务器部署/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -287,281 +301,116 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://www.inadm.com/2019/12/08/yum-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-        <time datetime="2019-11-06T00:57:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ntp 服务部署
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">openvpn 搭建</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/">openvpn 搭建</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/" class="archive-article-date">
-        <time datetime="2019-10-29T16:48:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">chfs 文件共享</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/05/namedmanager-dns/" class="archive-article-date">
-        <time datetime="2019-09-04T23:46:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/09/05/namedmanager-dns/">namedmanager dns 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/21/jira-wiki/" class="archive-article-date">
-        <time datetime="2019-08-20T23:44:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/21/jira-wiki/">jira-wiki 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/15/openldap/" class="archive-article-date">
-        <time datetime="2019-08-14T23:43:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/15/openldap/">openldap 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-        <time datetime="2019-08-09T21:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/">zimbra 邮箱部署</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -602,8 +451,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

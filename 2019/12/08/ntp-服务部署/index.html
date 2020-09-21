@@ -6,17 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.inadm.com">
-  <title>Archives: 2019 | INADM</title>
+  <title>ntp 服务部署 | INADM</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="INADM">
-<meta property="og:url" content="https://www.inadm.com/archives/2019/index.html">
+  <meta name="description" content="NTP IDC企业机房内网时间服务器部署 NTP 服务端部署 NTP 客户端部署 NTP 时间相关查询命令    当企业服务器达到一定规模后又需要考虑安全问题时,隔离外网必不可少。但是隔离外网后,各服务器本地时间同步又会存在校准问题。  如果Linux各服务器之间时间不同步,通信必然存在故障。此时部署机房内部时间服务器必不可少。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ntp 服务部署">
+<meta property="og:url" content="https://www.inadm.com/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="INADM">
+<meta property="og:description" content="NTP IDC企业机房内网时间服务器部署 NTP 服务端部署 NTP 客户端部署 NTP 时间相关查询命令    当企业服务器达到一定规模后又需要考虑安全问题时,隔离外网必不可少。但是隔离外网后,各服务器本地时间同步又会存在校准问题。  如果Linux各服务器之间时间不同步,通信必然存在故障。此时部署机房内部时间服务器必不可少。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.inadm.com/images/pasted-52.png">
+<meta property="og:image" content="https://www.inadm.com/images/pasted-56.png">
+<meta property="og:image" content="https://www.inadm.com/images/pasted-57.png">
+<meta property="og:image" content="https://www.inadm.com/images/pasted-58.png">
+<meta property="og:image" content="https://www.inadm.com/images/pasted-59.png">
+<meta property="article:published_time" content="2019-12-08T13:35:15.000Z">
+<meta property="article:modified_time" content="2020-09-05T01:52:52.717Z">
 <meta property="article:author" content="Patrick">
+<meta property="article:tag" content="Linux-service">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.inadm.com/images/pasted-52.png">
   
     <link rel="alternative" href="/atom.xml" title="INADM" type="application/atom+xml">
   
@@ -198,41 +209,101 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-ntp-服务部署" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      ntp 服务部署
+    </h1>
+  
+
+
+  
+  
 <a href="/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/" class="archive-article-date">
         <time datetime="2019-12-08T13:35:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
 </a>
 
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/">ntp 服务部署</a>
-	
-    </h1>
   
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>NTP IDC企业机房内网时间服务器部署</strong><ul>
+<li>NTP 服务端部署</li>
+<li>NTP 客户端部署</li>
+<li>NTP 时间相关查询命令</li>
+</ul>
+</li>
+</ul>
+<p><font size=2>当企业服务器达到一定规模后又需要考虑安全问题时,隔离外网必不可少。但是隔离外网后,各服务器本地时间同步又会存在校准问题。<br>  如果Linux各服务器之间时间不同步,通信必然存在故障。此时部署机房内部时间服务器必不可少。</font></p>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
 
+<p>1.1 <strong>部署环境</strong></p>
+<figure class="highlight bash"><figcaption><span>部署基础环境</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. centos 7 os</span><br><span class="line">2. domain: ntp.inadm.com</span><br><span class="line">3. ntp_server: 172.16.10.100</span><br><span class="line">4. ntp_client: 172.16.10.200</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
+<p>2.1 <strong>NTP 服务端部署</strong></p>
+<figure class="highlight bash"><figcaption><span>NTP 安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// NTP 服务端和客户端只需安装ntp和ntpdate 2个包即可</span><br><span class="line"><span class="comment"># yum -y install ntp ntpdate</span></span><br><span class="line"></span><br><span class="line">// 时区每台服务器上均需设置</span><br><span class="line"><span class="comment"># timedatectl set-timezone Asia/Shanghai</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>NTP服务端部署</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">// NTP服务端部署强烈推荐高可用,如有硬件做VIP更佳,没有则其它替代也行例如Keepalived</span><br><span class="line">// 如果做高可用,2台服务端配置文件做一模一样配置即可,无需互相同步时间。服务端会自动同步设定的外网时钟</span><br><span class="line"></span><br><span class="line"><span class="comment"># egrep -v "^$|^#" /etc/ntp.conf</span></span><br><span class="line">// 系统时间与BIOS事件的偏差记录。如果关机维护了,BIOS时间还在正常运行,但系统时间已未运行,drift则是记录到关机后的最后一刻记录,开机后会根据此文件核对效验</span><br><span class="line">driftfile /var/lib/ntp/drift</span><br><span class="line">// 日志目录定义,可有可无,不定义则默认在/var/<span class="built_in">log</span>/messages中</span><br><span class="line">logfile	/data/logs/ntp/ntpd.log</span><br><span class="line">// 默认拒绝所有ipv4客户端的所有操作</span><br><span class="line">restrict default kod nomodify notrap nopeer noquery</span><br><span class="line">    restrict                                                <span class="comment"># 控制相关权限</span></span><br><span class="line">    default                                                 <span class="comment"># 默认所有地址</span></span><br><span class="line">    kod:                                                    <span class="comment"># 访问违规时发送KoD包 </span></span><br><span class="line">    nomodify                                                <span class="comment"># 用户端不能使用ntpq,ntpc修改时间服务器,但可以校验时间</span></span><br><span class="line">    notrap                                                  <span class="comment"># 不提供trap远端登陆: 拒绝为匹配的主机提供模式 6 控制消息陷阱服务。陷阱服务是 ntpdq 控制消息协议的子系统,用于远程事件日志记录程序</span></span><br><span class="line">    nopeer                                                  <span class="comment"># 用于阻止主机尝试与服务器对等,并允许欺诈性服务器控制时钟</span></span><br><span class="line">    noquery                                                 <span class="comment"># 不提供客户端的时间查询: 用户端不能使用ntpq,ntpc等命令来查询ntp服务器</span></span><br><span class="line">// 默认拒绝所有ipv6客户端的所有操作</span><br><span class="line">restrict -6 default kod nomodify notrap nopeer noquery</span><br><span class="line">// 允许本机ipv4所有操作</span><br><span class="line">restrict 127.0.0.1</span><br><span class="line">// 允许本机ipv6所有操作</span><br><span class="line">restrict -6 ::1</span><br><span class="line">// 允许内网哪些段内机器连接这台服务器同步时间。但是不允许修改服务器上的时间和不提供<span class="built_in">trap</span>这个远程事件登入</span><br><span class="line">restrict 172.16.10.0 mask 255.255.255.0 nomodify notrap</span><br><span class="line">// 服务端向外部哪些时钟进行同步时间,可写多个但建议只写同一厂商</span><br><span class="line">server ntp1.aliyun.com [iburst]</span><br><span class="line">    prefer          					    <span class="comment"># 优先级最高</span></span><br><span class="line">    burst           					    <span class="comment"># NTP服务端自身可用时,发送相关并发包检测</span></span><br><span class="line">    iburst          					    <span class="comment"># NTP服务端自身对外不可用时,发送相关并发包检测,达到快速同步效果</span></span><br><span class="line">// 允许哪些时钟修改本机时间,如上条配置写多个,建议这里写一样多</span><br><span class="line">restrict ntp1.aliyun.com nomodify notrap noquery</span><br><span class="line">// 以下2条配置表示,当外部时间不可用时,使用本机时间;stratum 层级</span><br><span class="line">server 127.127.1.0</span><br><span class="line">fudge 127.127.1.0 stratum 10</span><br><span class="line">// 最后2条配置保持默认,不做介绍</span><br><span class="line">includefile /etc/ntp/crypto/pw</span><br><span class="line">keys /etc/ntp/keys</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>硬件时钟配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// NTP服务会在同步完系统时间后根据此配置将系统时间同步到硬件时间</span><br><span class="line">grep -q <span class="string">"SYNC_HWCLOCK"</span> /etc/sysconfig/ntpd &amp;&amp; sed -i <span class="string">'/SYNC_HWCLOCK/ s/.*/SYNC_HWCLOCK=yes/ /etc/sysconfig/ntpd'</span> || <span class="built_in">echo</span> <span class="string">"SYNC_HWCLOCK=yes"</span> &gt;&gt; /etc/sysconfig/ntpd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>启动NTP服务</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 配置文件更改完之前不要启动NTP服务</span><br><span class="line">// 启动NTP服务之前先ntpdate更新一次时间</span><br><span class="line">// 如果本地时间与获取更新时间相差较大,NTP服务会认为是人为手动更改了,则不在进行同步更新</span><br><span class="line"><span class="comment"># ntpdate ntp1.aliyun.com</span></span><br><span class="line"><span class="comment"># systemctl start ntpd &amp;&amp; systemctl enable ntpd</span></span><br><span class="line">// 启动NTP服务之后,此服务和其它服务不同,不是立即生效。需等待1到5分钟</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-52.png" alt="upload successful"></p>
+<p>3.1 <strong>NTP 客户端部署</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 客户端仅只需修改一行配置即可</span><br><span class="line"></span><br><span class="line"><span class="comment"># egrep -v "^$|^#" /etc/ntp.conf</span></span><br><span class="line">driftfile /var/lib/ntp/drift</span><br><span class="line">restrict default nomodify notrap nopeer noquery</span><br><span class="line">restrict 127.0.0.1 </span><br><span class="line">restrict ::1</span><br><span class="line">// 将默认server行注释,配置服务端配置</span><br><span class="line">server ntp.inadm.com iburst</span><br><span class="line">includefile /etc/ntp/crypto/pw</span><br><span class="line">keys /etc/ntp/keys</span><br><span class="line"><span class="built_in">disable</span> monitor</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-56.png" alt="upload successful"></p>
+<figure class="highlight bash"><figcaption><span>硬件时钟配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// NTP服务会在同步完系统时间后根据此配置将系统时间同步到硬件时间</span><br><span class="line">grep -q <span class="string">"SYNC_HWCLOCK"</span> /etc/sysconfig/ntpd &amp;&amp; sed -i <span class="string">'/SYNC_HWCLOCK/ s/.*/SYNC_HWCLOCK=yes/ /etc/sysconfig/ntpd'</span> || <span class="built_in">echo</span> <span class="string">"SYNC_HWCLOCK=yes"</span> &gt;&gt; /etc/sysconfig/ntpd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 服务端同步已生效后在进行客户端同步</span><br><span class="line"><span class="comment"># ntpdate ntp.inadm.com</span></span><br><span class="line"><span class="comment"># systemctl start ntpd &amp;&amp; systemctl enable ntpd</span></span><br></pre></td></tr></table></figure>
+
+<p>4.1 <strong>NTP 时间相关查询命令</strong><br><font size=2>以下4个命令可检查和验证NTP是否已生效,系统时间、硬件时间是否已同步并生效</font></p>
+<figure class="highlight bash"><figcaption><span>ntpq</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ntpq -p</span></span><br><span class="line">remote: 本机所连接的上层NTP服务器，最左边符号含义：</span><br><span class="line">    [*] 前正在使用的上层NTP服务器</span><br><span class="line">    [+] 连上了上层NTP服务器，但为使用,待使用状态</span><br><span class="line">    [-] 同步的该NTP服务器被认为不合格</span><br><span class="line">    [x] 同步的外网NTP服务器不可用</span><br><span class="line">refid: 指的是给上层NTP服务器提供时间校对的服务器</span><br><span class="line">St: 上层NTP服务器的级别。</span><br><span class="line">When: 上一次与上层NTP服务器进行时间校对的时间（单位：s)</span><br><span class="line">Poll: 本地主机与上层NTP服务器进行时间校对的周期（单位：s）</span><br><span class="line">reach: 已经向上层 NTP 服务器要求更新的次数 </span><br><span class="line">delay: 网络传输过程钟延迟的时间 单位为 10^(-6) 秒 </span><br><span class="line">offset: 时间补偿的结果 单位为10^(-6) 秒</span><br><span class="line">jitter: Linux 系统时间与BIOS硬件时间差 单位为 10^(-6) 秒</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-57.png" alt="upload successful"></p>
+<figure class="highlight bash"><figcaption><span>ntpstat </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ntpstat </span></span><br><span class="line">// 可以看到NTP已正常在进行时间同步,在第3层同步到</span><br><span class="line">// 时间校正耗时及每多长时间轮询一次</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-58.png" alt="upload successful"></p>
+<figure class="highlight bash"><figcaption><span>hwclock</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hwclock -r</span></span><br><span class="line">// 查看硬件时间。当系统时间更新完成后,硬件时间会稍慢些同步生效</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>timedatectl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># timedatectl</span></span><br><span class="line">// NTP enabled: yes			<span class="comment"># 表示是否开机自启了</span></span><br><span class="line">// NTP synchronized: yes		<span class="comment"># 系统时间同步完成,状态会变为yes</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-59.png" alt="upload successful"></p>
+<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6>
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Patrick
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://www.inadm.com/2019/12/08/ntp-服务部署/" title="ntp 服务部署" target="_blank">https://www.inadm.com/2019/12/08/ntp-服务部署/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -244,324 +315,116 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://www.inadm.com/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/12/08/yum-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-        <time datetime="2019-12-08T13:15:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2020/09/21/centos7-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2jumpserver/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          centos7 安装部署jumpserver
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/08/yum-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">yum 服务器部署</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/12/08/yum-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/">yum 服务器部署</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-        <time datetime="2019-11-06T00:57:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/">openvpn 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/" class="archive-article-date">
-        <time datetime="2019-10-29T16:48:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">chfs 文件共享</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/05/namedmanager-dns/" class="archive-article-date">
-        <time datetime="2019-09-04T23:46:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/09/05/namedmanager-dns/">namedmanager dns 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/21/jira-wiki/" class="archive-article-date">
-        <time datetime="2019-08-20T23:44:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/21/jira-wiki/">jira-wiki 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/15/openldap/" class="archive-article-date">
-        <time datetime="2019-08-14T23:43:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/15/openldap/">openldap 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-        <time datetime="2019-08-09T21:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/">zimbra 邮箱部署</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -602,8 +465,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

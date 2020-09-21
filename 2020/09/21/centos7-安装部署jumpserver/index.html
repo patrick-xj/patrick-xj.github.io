@@ -6,16 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.inadm.com">
-  <title>Archives: 2019 | INADM</title>
+  <title>centos7 安装部署jumpserver | INADM</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="INADM">
-<meta property="og:url" content="https://www.inadm.com/archives/2019/index.html">
+  <meta name="description" content="Jumpserver 开源堡垒机搭建 实现开发、运维登陆内部服务器,方便管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos7 安装部署jumpserver">
+<meta property="og:url" content="https://www.inadm.com/2020/09/21/centos7-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2jumpserver/index.html">
 <meta property="og:site_name" content="INADM">
+<meta property="og:description" content="Jumpserver 开源堡垒机搭建 实现开发、运维登陆内部服务器,方便管理">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-21T15:14:07.451Z">
+<meta property="article:modified_time" content="2020-09-21T15:14:07.451Z">
 <meta property="article:author" content="Patrick">
+<meta property="article:tag" content="Linux-service">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="INADM" type="application/atom+xml">
@@ -198,41 +203,117 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-centos7-安装部署jumpserver" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-        <time datetime="2019-12-08T13:35:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/">ntp 服务部署</a>
-	
+    <h1 class="article-title" itemprop="name">
+      centos7 安装部署jumpserver
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+<a href="/2020/09/21/centos7-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2jumpserver/" class="archive-article-date">
+        <time datetime="2020-09-21T15:14:07.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-21</time>
+</a>
+
+  
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <ul>
+<li><strong>Jumpserver 开源堡垒机搭建</strong><ul>
+<li>实现开发、运维登陆内部服务器,方便管理</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
+
+<ul>
+<li><strong>部署步骤</strong><ul>
+<li>环境介绍</li>
+<li>安装部署</li>
+<li>跨区域分布式</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-环境介绍"><a href="#1-环境介绍" class="headerlink" title="1. 环境介绍"></a>1. <strong>环境介绍</strong></h4><table>
+<thead>
+<tr>
+<th>主机名</th>
+<th>IP地址</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>jms01</td>
+<td>192.168.0.80/172.16.10.80</td>
+<td>双网卡</td>
+</tr>
+<tr>
+<td>client01</td>
+<td>172.16.10.100</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><h4 id="2-安装部署"><a href="#2-安装部署" class="headerlink" title="2. 安装部署"></a>2. <strong>安装部署</strong></h4><h6 id="2-1-基础包安装"><a href="#2-1-基础包安装" class="headerlink" title="2.1 基础包安装"></a>2.1 基础包安装</h6><figure class="highlight bash"><figcaption><span>包安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 阿里repo仓库</span></span><br><span class="line">rm -f /etc/yum.repos.d/*</span><br><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">yum -y install epel-release</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基础包安装</span></span><br><span class="line">yum -y install vim wget gcc git</span><br><span class="line"></span><br><span class="line"><span class="comment"># jumpserver 依赖于redis</span></span><br><span class="line">yum -y install redis</span><br><span class="line">sed -i <span class="string">'480c requirepass pass'</span> /etc/redis.conf</span><br><span class="line">systemctl start redis &amp;&amp; systemctl <span class="built_in">enable</span> redis</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-2-安装maridb数据库"><a href="#2-2-安装maridb数据库" class="headerlink" title="2.2 安装maridb数据库"></a>2.2 安装maridb数据库</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mariadb mariadb-devel mariadb-server MariaDB-shared</span><br><span class="line">systemctl start mariadb &amp;&amp; systemctl <span class="built_in">enable</span> mariadb</span><br><span class="line">mysql_secure_installation</span><br><span class="line">Enter current password <span class="keyword">for</span> root (enter <span class="keyword">for</span> none):           <span class="comment"># 无密码,直接回车</span></span><br><span class="line">Set root password? [Y/n] Y</span><br><span class="line">New password: </span><br><span class="line">Re-enter new password: </span><br><span class="line">mysql -uroot -ppass -A                                      <span class="comment"># 用来登陆</span></span><br><span class="line">MariaDB [(none)]&gt; create database jumpserver default charset <span class="string">'utf8'</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-3-安装python-3-建立python虚拟环境"><a href="#2-3-安装python-3-建立python虚拟环境" class="headerlink" title="2.3 安装python 3,建立python虚拟环境"></a>2.3 安装python 3,建立python虚拟环境</h6><figure class="highlight bash"><figcaption><span>python3.6安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y update python python-devel</span><br><span class="line">yum -y install python36 python36-devel</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>jumpserver 下载</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/jumpserver/jumpserver/archive/v2.1.0.tar.gz               <span class="comment"># 源码 2.1.0</span></span><br><span class="line">tar -xf v2.1.0.tar.gz </span><br><span class="line">mv jumpserver-2.1.0 /usr/<span class="built_in">local</span>/jumpserver</span><br><span class="line">yum -y install $(cat /usr/<span class="built_in">local</span>/jumpserver/requirements/rpm_requirements.txt)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>建立虚拟环境</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">python3.6 -m venv py3                                                             <span class="comment"># 创建虚拟环境</span></span><br><span class="line"><span class="built_in">source</span> /usr/<span class="built_in">local</span>/py3/bin/activate                                                <span class="comment"># 开启虚拟环境</span></span><br><span class="line">pip install wheel -i https://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">pip install --upgrade pip setuptools -i https://mirrors.aliyun.com/pypi/simple/   <span class="comment"># 升级pip</span></span><br><span class="line"><span class="comment"># 如安装报错缺乏依赖,直接手动pip install 依赖包。然后再重新执行此行命令直到完成安装</span></span><br><span class="line">pip install -r /usr/<span class="built_in">local</span>/jumpserver/requirements/requirements.txt -i https://mirrors.aliyun.com/pypi/simple/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>更改Jumpserver配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/jumpserver</span><br><span class="line">cp config_example.yml config.yml</span><br><span class="line">SECRET_KEY=$(cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 50)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"SECRET_KEY=<span class="variable">$SECRET_KEY</span>"</span> &gt;&gt; ~/.bashrc</span><br><span class="line">BOOTSTRAP_TOKEN=$(cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"BOOTSTRAP_TOKEN=<span class="variable">$BOOTSTRAP_TOKEN</span>"</span> &gt;&gt; ~/.bashrc</span><br><span class="line">cat ~/.bashrc</span><br><span class="line">    <span class="comment"># SECRET_KEY=YaOIm1WxJqriaY8ir3WExkQA3b77E869Am4c6nChB37d65LTQ8</span></span><br><span class="line">    <span class="comment"># BOOTSTRAP_TOKEN=6Un1VIwaP5CZPVmp</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># vim config.yml</span></span><br><span class="line">4 SECRET_KEY: YaOIm1WxJqriaY8ir3WExkQA3b77E869Am4c6nChB37d65LTQ8</span><br><span class="line">8 BOOTSTRAP_TOKEN: 6Un1VIwaP5CZPVmp</span><br><span class="line">12 DEBUG: <span class="literal">false</span></span><br><span class="line">16 LOG_LEVEL: ERROR</span><br><span class="line">22 SESSION_EXPIRE_AT_BROWSER_CLOSE: <span class="literal">true</span></span><br><span class="line">38 DB_USER: root</span><br><span class="line">39 DB_PASSWORD: pass</span><br><span class="line">52 REDIS_PASSWORD: pass</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>启动Jumpserver</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ./jms start -d</span></span><br><span class="line"><span class="comment"># ./jms start | stop | status | all</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="2-4-coco-jms-guacamole安装"><a href="#2-4-coco-jms-guacamole安装" class="headerlink" title="2.4 coco jms_guacamole安装"></a>2.4 coco jms_guacamole安装</h6><figure class="highlight bash"><figcaption><span>安装docker环境</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">yum -y install docker-ce</span><br><span class="line">systemctl <span class="built_in">enable</span> docker</span><br><span class="line">mkdir -p /etc/docker</span><br><span class="line">wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>运行coco和jms_guacamole</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --name jms_koko -d -p 8022:8022 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://192.168.0.100:8080 -e BOOTSTRAP_TOKEN=<span class="variable">$BOOTSTRAP_TOKEN</span> -e LOG_LEVEL=ERROR --restart=always jumpserver/jms_koko:2.1.0</span><br><span class="line">docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://192.168.0.100:8080 -e BOOTSTRAP_TOKEN=<span class="variable">$BOOTSTRAP_TOKEN</span> -e GUACAMOLE_LOG_LEVEL=ERROR --restart=always jumpserver/jms_guacamole:2.1.0</span><br><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-5-Jumpserver前端安装"><a href="#2-5-Jumpserver前端安装" class="headerlink" title="2.5 Jumpserver前端安装"></a>2.5 Jumpserver前端安装</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">wget https://demo.jumpserver.org/download/luna/v2.1.0/luna-v2.1.0.tar.gz</span><br><span class="line">tar -xf luna-v2.1.0.tar.gz</span><br><span class="line">mv luna-v2.1.0 luna</span><br><span class="line">chown -R root:root luna</span><br><span class="line"></span><br><span class="line">wget https://demo.jumpserver.org/download/lina/v2.1.0/lina-v2.1.0.tar.gz</span><br><span class="line">tar -xf lina-v2.1.0.tar.gz </span><br><span class="line">mv lina-v2.1.0 lina</span><br><span class="line">chown -R root.root lina</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>nginx配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nginx</span><br><span class="line">systemctl <span class="built_in">enable</span> nginx</span><br><span class="line">mkdir -p /etc/nginx/conf.d/vweb/</span><br><span class="line"><span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line"> 31     <span class="comment">#include /etc/nginx/conf.d/*.conf;</span></span><br><span class="line"> 32     include /etc/nginx/conf.d/vweb/*.conf;</span><br><span class="line"></span><br><span class="line">// jumpserver nginx 2.1.0 配置文件: https://demo.jumpserver.org/download/nginx/conf.d/2.1.0/</span><br><span class="line"><span class="comment"># vim /etc/nginx/conf.d/vhost/jumpserver.conf</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 8088;</span><br><span class="line">    <span class="comment">#server_name _;</span></span><br><span class="line"></span><br><span class="line">    server_tokens off;</span><br><span class="line">    ssl_protocols TLSv1.2;</span><br><span class="line"> </span><br><span class="line">    client_max_body_size 100m;</span><br><span class="line"> </span><br><span class="line">    location /ui/ &#123;</span><br><span class="line">        try_files <span class="variable">$uri</span> / /index.html;</span><br><span class="line">        <span class="built_in">alias</span> /usr/<span class="built_in">local</span>/lina/;</span><br><span class="line">        expires 24h;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    location /luna/ &#123;</span><br><span class="line">        try_files <span class="variable">$uri</span> / /index.html;</span><br><span class="line">        <span class="built_in">alias</span> /usr/<span class="built_in">local</span>/luna/;</span><br><span class="line">        expires 24h;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    location /media/ &#123;</span><br><span class="line">        add_header Content-Encoding gzip;</span><br><span class="line">        root /usr/<span class="built_in">local</span>/jumpserver/data/;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    location /static/ &#123;</span><br><span class="line">        root /usr/<span class="built_in">local</span>/jumpserver/data/;</span><br><span class="line">        expires 24h;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    location /koko/ &#123;</span><br><span class="line">        proxy_pass       http://localhost:5000;</span><br><span class="line">        proxy_buffering off;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_request_buffering off;</span><br><span class="line">        proxy_set_header Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        proxy_set_header Connection <span class="string">"upgrade"</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="comment">#access_log off;</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    location /guacamole/ &#123;</span><br><span class="line">        proxy_pass       http://localhost:8081/;</span><br><span class="line">        proxy_buffering off;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_request_buffering off;</span><br><span class="line">        proxy_set_header Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        proxy_set_header Connection <span class="variable">$http_connection</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="comment">#access_log off;</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    location /ws/ &#123;</span><br><span class="line">    proxy_pass http://localhost:8070;</span><br><span class="line">    proxy_buffering off;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">    proxy_request_buffering off;</span><br><span class="line">        proxy_set_header Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        proxy_set_header Connection <span class="string">"upgrade"</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    location /api/ &#123;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_pass http://localhost:8080;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    location /core/ &#123;</span><br><span class="line">    proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_pass http://localhost:8080;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    location / &#123;</span><br><span class="line">        rewrite ^/(.*)$ /ui/<span class="variable">$1</span> last;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># systemctl restart nginx</span></span><br></pre></td></tr></table></figure>
+
+<p>持续更新中</p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Patrick
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://www.inadm.com/2020/09/21/centos7-安装部署jumpserver/" title="centos7 安装部署jumpserver" target="_blank">https://www.inadm.com/2020/09/21/centos7-安装部署jumpserver/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -244,324 +325,107 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://www.inadm.com/2020/09/21/centos7-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2jumpserver/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/12/08/yum-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-        <time datetime="2019-12-08T13:15:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ntp 服务部署</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/12/08/yum-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/">yum 服务器部署</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-        <time datetime="2019-11-06T00:57:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/11/06/openvpn-%E6%90%AD%E5%BB%BA/">openvpn 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/" class="archive-article-date">
-        <time datetime="2019-10-29T16:48:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/30/CHFS-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">chfs 文件共享</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/05/namedmanager-dns/" class="archive-article-date">
-        <time datetime="2019-09-04T23:46:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/09/05/namedmanager-dns/">namedmanager dns 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/21/jira-wiki/" class="archive-article-date">
-        <time datetime="2019-08-20T23:44:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/21/jira-wiki/">jira-wiki 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/15/openldap/" class="archive-article-date">
-        <time datetime="2019-08-14T23:43:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/15/openldap/">openldap 搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-        <time datetime="2019-08-09T21:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/08/10/zimbra-%E9%82%AE%E7%AE%B1%E9%83%A8%E7%BD%B2/">zimbra 邮箱部署</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux-service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -602,8 +466,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
