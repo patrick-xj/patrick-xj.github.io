@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.inadm.com">
-  <title>Linux base | INADM</title>
+  <title>windows 2012多用户远程登录 | INADM</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Linux base">
-<meta property="og:url" content="https://www.inadm.com/Linux-base/index.html">
+  <meta name="description" content="windows 2012多用户登陆 默认只允许2个用户同时登录 通过相关配置解决多用户登陆并且打开任务进程互不影响">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows 2012多用户远程登录">
+<meta property="og:url" content="https://www.inadm.com/2020/03/08/2012%E5%A4%9A%E7%94%A8%E6%88%B7%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/index.html">
 <meta property="og:site_name" content="INADM">
+<meta property="og:description" content="windows 2012多用户登陆 默认只允许2个用户同时登录 通过相关配置解决多用户登陆并且打开任务进程互不影响">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-19T20:21:52.000Z">
-<meta property="article:modified_time" content="2020-06-19T20:21:52.272Z">
+<meta property="article:published_time" content="2020-03-08T04:54:58.000Z">
+<meta property="article:modified_time" content="2020-10-27T17:22:42.592Z">
 <meta property="article:author" content="Patrick">
+<meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="INADM" type="application/atom+xml">
@@ -206,22 +209,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-2012多用户远程登录" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      Linux base
+      windows 2012多用户远程登录
     </h1>
   
 
 
   
   
-<a href="/Linux-base/index.html" class="archive-article-date">
-        <time datetime="2020-06-19T20:21:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-20</time>
+<a href="/2020/03/08/2012%E5%A4%9A%E7%94%A8%E6%88%B7%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" class="archive-article-date">
+        <time datetime="2020-03-08T04:54:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
 </a>
 
   
@@ -230,7 +233,35 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <ul>
+<li><strong>windows 2012多用户登陆</strong><ul>
+<li>默认只允许2个用户同时登录</li>
+<li>通过相关配置解决多用户登陆并且打开任务进程互不影响</li>
+</ul>
+</li>
+</ul>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
+
+<ol>
+<li><p><strong>安装桌面会话主机和远程桌面授权</strong><br>1）服务器管理器 – 添加角色和功能，下一步 – 基于角色或基于功能的安装，下一步 – 从服务器池中选择服务器，下一步 – 远程桌面服务，下一步 – 下一步 – 下一步 – 勾选”远程会话主机”和“远程桌面授权”，下一步 – 安装 – 重启服务器生效</p>
+</li>
+<li><p><strong>Web 申请激活码</strong><br>1）管理工具 – 远程桌面服务 – 远程桌面授权管理器 – 未激活的服务器右键”属性”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">连接方法</span><br><span class="line">  连接方法：Web浏览器</span><br><span class="line">  记录下:产品ID：00252-20000-06400-AT602</span><br><span class="line">必须信息：</span><br><span class="line">  姓：TEST</span><br><span class="line">  名：TEST</span><br><span class="line">  公司：TEST</span><br><span class="line">  国家：中国</span><br><span class="line">  确定</span><br></pre></td></tr></table></figure>
+
+<p>2）IE浏览器输入：<a href="https://activate.microsoft.com" target="_blank" rel="noopener">https://activate.microsoft.com</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">英文界面可选择为中文 go 即跳转到中文</span><br><span class="line">选中：启用许可证服务器，下一步</span><br><span class="line">  产品 ID：输入刚才记录下来的20位ID&lt;00252-20000-06400-AT602&gt; </span><br><span class="line">  公司：TEST</span><br><span class="line">  国家：中国，下一步 -- 下一步，得到35位许可ID：&lt;PDRVV-B47F4-VFPDY-9FHWF-YRTQV-DQDM7-JGR4Q&gt; 单击：是</span><br><span class="line">  许可证程序：企业协议&lt;如没有许可证，则选择企业协议&gt;，下一步</span><br><span class="line">  产品类型：Windows Server 2012 远程桌面服务每用户客户端访问许可证</span><br><span class="line">  数量：500&lt;根据自己需求设置&gt;</span><br><span class="line">  协议号：如果没有如下号可使用&lt;6565792，4954438，6879321，5296992&gt;，下一步 -- 下一步</span><br><span class="line">  得到另外 ID：KB8KG-9VT7F-XC4JY-CGR6B-8BV62-MB73Y-464D3  ，结束，确定</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>激活终端服务</strong><br>1）管理工具 – 远程桌面服务 – 远程桌面授权管理器 – 选择服务器右键：激活服务器 – 下一步 – Web 浏览器,下一步 – 输入许可服务器ID：<PDRVV-B47F4-VFPDY-9FHWF-YRTQV-DQDM7-JGR4Q>，下一步 – 下一步 – 下一步 – 输入：<KB8KG-9VT7F-XC4JY-CGR6B-8BV62-MB73Y-464D3>,下一步 – 完成</p>
+</li>
+<li><p><strong>配置远程桌面会话主机授权服务器</strong><br>1）管理工具 – 远程桌面服务 – RD 授权诊断程序 &lt;当前为没有授权&gt;<br>2）gpedit.msc – 计算机配置 – 管理模板 – Windows 组件 – 远程桌面服务 – 远程桌面会话主机 – 授权<br> 找到：使用指定的远程桌面许可服务器，设置为”启用”并设置本机IP或主机名</p>
+</li>
+</ol>
+<ol start="5">
+<li><strong>gpedit.msc 策略配置</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1) gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 授权</span><br><span class="line">  找到：设置远程桌面授权模式</span><br><span class="line">    启用</span><br><span class="line">    指定RD：按用户</span><br><span class="line">  重新打开RD授权诊断程序</span><br><span class="line">2）gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 连接 -- 限制连接的数量</span><br><span class="line">  已启用</span><br><span class="line">  最大连接数：500</span><br><span class="line">3) gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 连接</span><br><span class="line">  将远程桌面服务限制到单独的远程桌面会话</span><br><span class="line">  禁用  启用较好</span><br><span class="line">4) gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 会话时间限制</span><br><span class="line">  启用：设置为1分钟（关闭远程管理工具后1分钟后注销用户）</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6>
     
 
     
@@ -244,7 +275,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://www.inadm.com/Linux-base/index.html" title="Linux base" target="_blank">https://www.inadm.com/Linux-base/index.html</a>
+          <a href="https://www.inadm.com/2020/03/08/2012多用户远程登录/" title="windows 2012多用户远程登录" target="_blank">https://www.inadm.com/2020/03/08/2012多用户远程登录/</a>
         </li>
         
         <li>
@@ -261,6 +292,17 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -311,7 +353,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://www.inadm.com/Linux-base/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://www.inadm.com/2020/03/08/2012%E5%A4%9A%E7%94%A8%E6%88%B7%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -323,6 +365,16 @@
   </div>
 </article>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/08/ntp-%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ntp 服务部署</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -392,7 +444,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
