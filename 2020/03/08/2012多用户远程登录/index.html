@@ -18,7 +18,7 @@
 <meta property="og:description" content="windows 2012多用户登陆 默认只允许2个用户同时登录 通过相关配置解决多用户登陆并且打开任务进程互不影响">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-08T04:54:58.000Z">
-<meta property="article:modified_time" content="2020-10-27T17:22:42.592Z">
+<meta property="article:modified_time" content="2020-10-27T17:35:25.738Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
@@ -257,7 +257,15 @@
 </li>
 </ol>
 <ol start="5">
-<li><strong>gpedit.msc 策略配置</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1) gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 授权</span><br><span class="line">  找到：设置远程桌面授权模式</span><br><span class="line">    启用</span><br><span class="line">    指定RD：按用户</span><br><span class="line">  重新打开RD授权诊断程序</span><br><span class="line">2）gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 连接 -- 限制连接的数量</span><br><span class="line">  已启用</span><br><span class="line">  最大连接数：500</span><br><span class="line">3) gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 连接</span><br><span class="line">  将远程桌面服务限制到单独的远程桌面会话</span><br><span class="line">  禁用  启用较好</span><br><span class="line">4) gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 会话时间限制</span><br><span class="line">  启用：设置为1分钟（关闭远程管理工具后1分钟后注销用户）</span><br></pre></td></tr></table></figure>
+<li><p><strong>gpedit.msc 策略配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1) gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 授权</span><br><span class="line">  找到：设置远程桌面授权模式</span><br><span class="line">    启用</span><br><span class="line">    指定RD：按用户</span><br><span class="line">  重新打开RD授权诊断程序</span><br><span class="line">2）gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 连接 -- 限制连接的数量</span><br><span class="line">  已启用</span><br><span class="line">  最大连接数：500</span><br><span class="line">3) gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 连接</span><br><span class="line">  将远程桌面服务限制到单独的远程桌面会话</span><br><span class="line">  禁用  启用较好</span><br><span class="line">4) gpedit.msc -- 计算机配置 -- 管理模板 -- windows组件 -- 远程桌面服务 -- 远程桌面会话主机 -- 会话时间限制</span><br><span class="line">  启用：设置为1分钟（关闭远程管理工具后1分钟后注销用户）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>关闭不必要端口防止被攻击</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1) 关闭端口137、138、139、445端口、关闭智能卡。防止0day攻击</span><br><span class="line">  禁止445端口</span><br><span class="line">    本地连接 --&gt; 卸载<span class="string">"Microsoft 网络客户端"</span> <span class="string">"Microsoft 网络的文件和打印机共享"</span> --&gt; 重启系统生效</span><br><span class="line">2) 禁止137、138、139端口</span><br><span class="line">    本地连<span class="string">"”右键 "</span>属性<span class="string">" --&gt; "</span>Internet 协议版本 4（TCP/IPv4）<span class="string">" "</span>属性<span class="string">" --&gt; 高级 --&gt; WINS --&gt; 选择 "</span>禁用 TCP/IP 上的 NetBIOS(S)<span class="string">"</span></span><br><span class="line"><span class="string">3) 关闭智能卡</span></span><br><span class="line"><span class="string">    进入 "</span>本地组策略编辑器<span class="string">" （gpedit.msc） --&gt; 计算机配置 --&gt; 管理模板 --&gt; Windows组件 --&gt; 智能卡</span></span><br><span class="line"><span class="string">      启用智能卡中的证书传播 --&gt; 禁用</span></span><br><span class="line"><span class="string">      启用智能卡中的根证书传播 --&gt; 禁用</span></span><br><span class="line"><span class="string">      强制从智能卡读取所有证书 --&gt; 禁用</span></span><br><span class="line"><span class="string">      打开智能卡即插即用服务 --&gt; 禁用</span></span><br><span class="line"><span class="string">      重启系统生效</span></span><br><span class="line"><span class="string">4) 检查端口是否已关闭：netstat -an|findstr xxx</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>禁用windows远程和本地直接复制粘贴数据和其它设置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. C:\Windows\System32\rdpclip.exe 文件 &lt;删除后重启系统确认系统是否能正常启动&gt;</span><br><span class="line">2. 禁止挂载本地磁盘：gpedit.msc –- 计算机配置 — Windows 组件 — 远程桌面服务 — 远程桌面会话主机 — 设备和资源重定向 ---（启用，所有不允许项） ；gpupdate</span><br><span class="line">3. 启用会话时间限制：gpedit.msc –- 计算机配置 — Windows 组件 — 远程桌面服务 — 远程桌面会话主机 — 会话时间限制 -- <span class="string">"设置已中断的时间限制"</span>、<span class="string">"设置RemoteApp回话的注销时间限制"</span></span><br><span class="line">4. 启用会话时间限制：gpedit.msc –- 计算机配置 — Windows 组件 — 远程桌面服务 — 远程桌面会话主机 — 连接 - 将远程桌面服务用户限制到单独的远程桌面服务回话_启用</span><br></pre></td></tr></table></figure>
+
 
 </li>
 </ol>
@@ -507,11 +515,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linux-service</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linux-service</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
