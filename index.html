@@ -1074,8 +1074,14 @@
     
     <ul>
 <li><strong>Centos 7 安装shadowsocks代理</strong><ul>
-<li>C/S 架构模式</li>
-<li><a href="https://shadowsocks.org/en/download/clients.html" target="_blank" rel="noopener">shadowsocks下载地址</a></li>
+<li>三种模式: <ul>
+<li>全局模式: 所有流量全走代理</li>
+<li>PAC自动模式: 自动根据PAC文件匹配则走代理,非自定义PAC文件的规则</li>
+<li>PAC模式: 根据自身需求根据特定格式自定义IP或域名,匹配则走代理</li>
+</ul>
+</li>
+<li>单用户与多用户</li>
+<li>客户端配置</li>
 </ul>
 </li>
 </ul>
@@ -1152,7 +1158,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019-2020 <a href="https://www.inadm.com/" target="_blank">Patrick</a>
+    		&copy; 2019-2021 <a href="https://www.inadm.com/" target="_blank">Patrick</a>
     	</div>
       	<div class="footer-right">
 			
@@ -1246,11 +1252,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linux-service</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linux-service</a>
               </li>
              
               <li class="article-tag-list-item">
