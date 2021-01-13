@@ -18,8 +18,11 @@
 <meta property="og:description" content="Centos 7 安装shadowsocks代理 三种模式:  全局模式: 所有流量全走代理 PAC自动模式: 自动根据PAC文件匹配则走代理,非自定义PAC文件的规则 PAC模式: 根据自身需求根据特定格式自定义IP或域名,匹配则走代理   单用户与多用户 客户端">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.inadm.com/images/pasted-74.png">
+<meta property="og:image" content="https://www.inadm.com/images/pasted-77.png">
+<meta property="og:image" content="https://www.inadm.com/images/pasted-75.png">
+<meta property="og:image" content="https://www.inadm.com/images/pasted-76.png">
 <meta property="article:published_time" content="2019-08-09T00:36:08.000Z">
-<meta property="article:modified_time" content="2021-01-13T22:04:14.493Z">
+<meta property="article:modified_time" content="2021-01-13T22:29:10.173Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Linux-service">
 <meta name="twitter:card" content="summary">
@@ -251,7 +254,16 @@
 <h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
 
 <ul>
-<li><strong>shadowsocks 客户端设置不同模式,流量请求图</strong><br><img src="/images/pasted-74.png" alt="upload successful"></li>
+<li><p><strong>shadowsocks 客户端设置三种模式,流量请求图</strong><br><img src="/images/pasted-74.png" alt="upload successful"></p>
+</li>
+<li><p><strong>PAC文件规则模板</strong><br>||       2个竖杠表示匹配规则<br>@@||     竖杠后面2个at表示绕过规则</p>
+<ul>
+<li>Windows<br>Windows”编辑GFWList的用户规则”(user-rule)保存后默认会直接将编辑规则保存到pac文件<br><img src="/images/pasted-77.png" alt="upload successful"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Mac OS<br>Mac OS配置好PAC自定义规则后还需单击”从GFW List更新PAC”并关闭再开启shadowsocks则生效<br><img src="/images/pasted-75.png" alt="upload successful"><br><img src="/images/pasted-76.png" alt="upload successful"></li>
 </ul>
 <ol>
 <li><p>安装pip</p>
@@ -542,11 +554,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linux-service</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linux-service</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
