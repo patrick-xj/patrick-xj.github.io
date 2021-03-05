@@ -6,24 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.inadm.com">
-  <title>ipmitool 服务器管理工具 | INADM</title>
+  <title>iptables 防火墙 | INADM</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="IPMITool可远程管理物理服务器 独立于系统、BIOS,是需要通电就可以远程开机关机、获取服务器硬件状态信息">
+  <meta name="description" content="iptables 防火墙命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ipmitool 服务器管理工具">
-<meta property="og:url" content="https://www.inadm.com/2019/06/21/ipmitool/index.html">
+<meta property="og:title" content="iptables 防火墙">
+<meta property="og:url" content="https://www.inadm.com/2019/06/10/iptables-%E9%98%B2%E7%81%AB%E5%A2%99/index.html">
 <meta property="og:site_name" content="INADM">
-<meta property="og:description" content="IPMITool可远程管理物理服务器 独立于系统、BIOS,是需要通电就可以远程开机关机、获取服务器硬件状态信息">
+<meta property="og:description" content="iptables 防火墙命令">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://www.inadm.com/images/pasted-47.png">
-<meta property="article:published_time" content="2019-06-20T23:30:48.000Z">
-<meta property="article:modified_time" content="2020-07-14T08:07:13.000Z">
+<meta property="article:published_time" content="2019-06-10T13:29:06.000Z">
+<meta property="article:modified_time" content="2021-03-05T17:04:03.723Z">
 <meta property="article:author" content="Patrick">
-<meta property="article:tag" content="Server">
+<meta property="article:tag" content="Linux-base">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.inadm.com/images/pasted-47.png">
   
     <link rel="alternative" href="/atom.xml" title="INADM" type="application/atom+xml">
   
@@ -211,22 +209,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ipmitool" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-iptables-防火墙" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      ipmitool 服务器管理工具
+      iptables 防火墙
     </h1>
   
 
 
   
   
-<a href="/2019/06/21/ipmitool/" class="archive-article-date">
-        <time datetime="2019-06-20T23:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-21</time>
+<a href="/2019/06/10/iptables-%E9%98%B2%E7%81%AB%E5%A2%99/" class="archive-article-date">
+        <time datetime="2019-06-10T13:29:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
 </a>
 
   
@@ -236,37 +234,24 @@
   <div class="article-entry" itemprop="articleBody">
     
     <ul>
-<li><strong>IPMITool可远程管理物理服务器</strong><ul>
-<li>独立于系统、BIOS,是需要通电就可以远程开机关机、获取服务器硬件状态信息</li>
-</ul>
-</li>
+<li><strong>iptables 防火墙命令</strong></li>
 </ul>
 <h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
 
 <ol>
-<li><strong>IPMITool 所需模块</strong></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep ipmi                <span class="comment"># 查询加载了哪些模块</span></span><br><span class="line">modprobe ipmi_msghandler         <span class="comment"># 加载相关模块</span></span><br><span class="line">modprobe ipmi_devintf</span><br><span class="line">modprobe ipmi_si</span><br></pre></td></tr></table></figure>
+<li>4表5链对应关系
+<table>    
+  <tr><th>4表</th><th colspan="5">5链</th></tr>
+  <tr><td>filter</td><td>INPUT</td><td>FORWARD</td><td>OUTPUT</td><td></td><td></td></tr>
+  <tr><td>nat</td><td>PREROUTING</td><td>POSTROUTING</td><td>OUTPUT</td><td></td><td></td></tr>
+  <tr><td>mangle</td><td>PREROUTING</td><td>POSTROUTING</td><td>INPUT</td><td>OUTPUT</td><td>FORWARD</td></tr>
+  <tr><td>raw</td><td>PREROUTING</td><td>OUTPUT</td><td></td><td></td><td></td></tr>
+</table>   
 
-<ol start="2">
-<li><strong>IPMITool 命令用法</strong></li>
-</ol>
-<figure class="highlight bash"><figcaption><span>远程命令管理</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ipmitool -H Bmc_IP -U Bmc_UserName -a -I lanplus</span></span><br><span class="line">    -H                        	<span class="comment"># 指定管理网口IP地址</span></span><br><span class="line">    -U                        	<span class="comment"># 指定管理网口用户名</span></span><br><span class="line">    -a                        	<span class="comment"># 在提示符下输入密码</span></span><br><span class="line">    -I                        	<span class="comment"># 指定接口类型</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><figcaption><span>Linux本地物理机命令管理</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ipmitool -H BMC_IP -U root -a -I lanplus </span><br><span class="line">    fru                      	<span class="comment"># 判断品牌等</span></span><br><span class="line">    delloem mac              	<span class="comment"># 获取Dell Mac 地址信息，仅适用于Dell</span></span><br><span class="line">    shell                    	<span class="comment"># shell 交互方式</span></span><br><span class="line">    mc reset cold            	<span class="comment"># 强制重启ibmc</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><ol start="3">
-<li>管理网口维护、账户维护</li>
+</li>
 </ol>
-<figure class="highlight bash"><figcaption><span>管理网口IP修改操作</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 管理网口IP修改仅适用于物理机系统上本地命令执行,不适用于远端命令维护</span></span><br><span class="line">ipmitool lan <span class="built_in">print</span>                                   <span class="comment"># 本地查看Bmc_IP</span></span><br><span class="line">ipmitool lan <span class="built_in">set</span> 1 ipaddr 192.168.x.x                <span class="comment"># 本地修改Bmc_IP</span></span><br><span class="line">ipmitool lan <span class="built_in">set</span> 1 netmask 255.255.255.0             <span class="comment"># 本地修改Bmc MASK</span></span><br><span class="line">ipmitool lan <span class="built_in">set</span> 1 defgw ipaddr 192.168.x.254        <span class="comment"># 本地修改网关</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><figcaption><span>管理用户维护</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ipmitool 创建用户分配权限适用于华为、浪潮服务器</span></span><br><span class="line"><span class="comment"># 适用于CentOS6/7 操作系统本地命令操作</span></span><br><span class="line">ipmitool user list 1                                 <span class="comment"># 本地命令查看通道1的用户信息</span></span><br><span class="line">ipmitool user <span class="built_in">set</span> name 10 User01                     <span class="comment"># 创建Bmc管理用户User01</span></span><br><span class="line">ipmitool user <span class="built_in">set</span> password 2 <span class="string">'Pass'</span>                  <span class="comment"># 本地命令修改BMC root 的密码</span></span><br><span class="line">ipmitool user <span class="built_in">set</span> password 10 <span class="string">'Pass'</span>                 <span class="comment"># 本地命令修改新创建的BMC用户的密码</span></span><br><span class="line">ipmitool user priv 10 4 1                            <span class="comment"># 本地配置Bmc权限ID_10，权限4[2为User权限、3为Operator权限、4为Administrator权限]，通道1 </span></span><br><span class="line">ipmitool user <span class="built_in">enable</span> 10                              <span class="comment"># 本地启用用户；disable为禁用</span></span><br></pre></td></tr></table></figure>
-<p><img src="/images/pasted-47.png" alt="upload successful"></p>
-<h6 id="-2"><a href="#-2" class="headerlink" title=""></a></h6><ol start="4">
-<li>远程命令管理</li>
-</ol>
-<figure class="highlight bash"><figcaption><span>远程开关机命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ipmitool -H Bmc_IP -U BMC_UserName -a -I lanplus power status</span><br><span class="line">    power status                 <span class="comment"># 远程查看电源状态</span></span><br><span class="line">    power reset                  <span class="comment"># 远程硬重启服务器</span></span><br><span class="line">    power on                     <span class="comment"># 远程硬开机</span></span><br><span class="line">    power off                    <span class="comment"># 远程硬关机</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 物理机操作系统本地操作方式</span></span><br><span class="line">ipmitool -I open power status</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><figcaption><span>BIOS 远程设置启动项</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ipmitool -H ip -U User -P Pass chassis bootdev &lt;device&gt;</span><br><span class="line">    none			 <span class="comment"># 不更改启动设备顺序</span></span><br><span class="line">    pxe				 <span class="comment"># 强制PXE引导仅一次</span></span><br><span class="line">    disk			 <span class="comment"># 从默认硬盘强制启动</span></span><br><span class="line">    cdrom			 <span class="comment"># 从CD / DVD强制启动</span></span><br><span class="line">    bios			 <span class="comment"># 强制启动进入BIOS设置程序</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 物理机操作系统本地操作方式</span></span><br><span class="line">ipmitool chassis bootdev pxe	 		<span class="comment"># 强制PXE引导仅一次</span></span><br><span class="line">ipmitool chassis bootdev pxe options=persistent	<span class="comment"># 永久PXE引导</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="-3"><a href="#-3" class="headerlink" title=""></a></h6>
+<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6>
     
 
     
@@ -280,7 +265,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://www.inadm.com/2019/06/21/ipmitool/" title="ipmitool 服务器管理工具" target="_blank">https://www.inadm.com/2019/06/21/ipmitool/</a>
+          <a href="https://www.inadm.com/2019/06/10/iptables-防火墙/" title="iptables 防火墙" target="_blank">https://www.inadm.com/2019/06/10/iptables-防火墙/</a>
         </li>
         
         <li>
@@ -302,7 +287,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Server</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux-base</a>
         		</li>
       		
 		</ul>
@@ -358,7 +343,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://www.inadm.com/2019/06/21/ipmitool/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://www.inadm.com/2019/06/10/iptables-%E9%98%B2%E7%81%AB%E5%A2%99/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -373,18 +358,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/07/16/cobler/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/15/perccli/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          cobbler 批量装机
+          perccli 戴尔服务器管理工具
         
       </div>
     </a>
   
   
-    <a href="/2019/06/21/linux-lvm/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">lvm 磁盘管理工具</div>
+    <a href="/2019/06/08/command/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">command 基础命令</div>
       <i class="icon-circle-right"></i>
     </a>
   
