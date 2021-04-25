@@ -6,21 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.inadm.com">
-  <title>iptables 防火墙 | INADM</title>
+  <title>Archives: 2019 | INADM</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="iptables 防火墙命令">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iptables 防火墙">
-<meta property="og:url" content="https://www.inadm.com/2019/06/10/iptables-%E9%98%B2%E7%81%AB%E5%A2%99/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="INADM">
+<meta property="og:url" content="https://www.inadm.com/archives/2019/page/3/index.html">
 <meta property="og:site_name" content="INADM">
-<meta property="og:description" content="iptables 防火墙命令">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-06-10T13:29:06.000Z">
-<meta property="article:modified_time" content="2021-03-10T11:05:17.862Z">
 <meta property="article:author" content="Patrick">
-<meta property="article:tag" content="Linux-base">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="INADM" type="application/atom+xml">
@@ -209,118 +204,41 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-iptables-防火墙" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2019/06/08/vim/" class="archive-article-date">
+        <time datetime="2019-06-07T17:24:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-08</time>
+</a>
+
+        </div>
+    	 
   
-  
-    <h1 class="article-title" itemprop="name">
-      iptables 防火墙
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2019/06/08/vim/">vim 使用技巧</a>
+	
     </h1>
   
 
 
-  
-  
-<a href="/2019/06/10/iptables-%E9%98%B2%E7%81%AB%E5%A2%99/" class="archive-article-date">
-        <time datetime="2019-06-10T13:29:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
-</a>
-
-  
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <ul>
-<li><strong>iptables 防火墙命令</strong></li>
-</ul>
-<h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
-
-<ol>
-<li><p>防火墙功能</p>
-<ul>
-<li>工作于网络或主机边缘</li>
-<li>进出本主机的网络数据包按照事先定义好的匹配规则进行检查</li>
-<li>对能够被规则所匹配的数据包按照规则定义的处理机制进行处理</li>
-</ul>
-</li>
-<li><p>4表5链对应关系和规则的功能和属性</p>
-
-<table>    
-  <tr><th>4表</th><th colspan="5">5链</th></tr>
-  <tr><td>filter [过滤表]</td><td>INPUT</td><td>FORWARD</td><td>OUTPUT</td><td></td><td></td></tr>
-  <tr><td>nat [地址转换表]</td><td>PREROUTING</td><td>POSTROUTING</td><td>OUTPUT</td><td></td><td></td></tr>
-  <tr><td>mangle [包标记表]</td><td>PREROUTING [路由前]</td><td>POSTROUTING [路由后]</td><td>INPUT [进入防火墙服务器的数据包]</td><td>OUTPUT [从防火墙出去的数据包]</td><td>FORWARD [转发]</td></tr>
-  <tr><td>raw [状态跟踪]</td><td>PREROUTING</td><td>OUTPUT</td><td></td><td></td><td></td></tr>
-  <tr><th>网络层协议属性</th><th colspan="1">ip</th></tr>
-  <tr><th>传输层协议属性</th><th colspan="1">tcp、udp、icmp</th></tr>
-</table>   
-
-</li>
-<li><p>iptables [filter 过滤表]</p>
-<ul>
-<li>选项</li>
-<li>语法</li>
-<li>标准匹配<ul>
-<li>通用匹配</li>
-<li>扩展匹配<ul>
-<li>隐含扩展</li>
-<li>显示扩展</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight bash"><figcaption><span>iptables 选项</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-t &#123;filter|nat|mangle|raw&#125;      <span class="comment"># 4个表</span></span><br><span class="line">-L: list</span><br><span class="line">    -n: 			<span class="comment"># 数字格式显示IP和PORT</span></span><br><span class="line">    -v: 			<span class="comment"># 显示详细信息 -vv, -vvv</span></span><br><span class="line">    --line-numbers: 		<span class="comment"># 显示链规则的行号</span></span><br><span class="line">    -x: 			<span class="comment"># 显示精确值,不要单位换算</span></span><br><span class="line"><span class="comment"># 其它子命令</span></span><br><span class="line">管理链:</span><br><span class="line">    -F:      			<span class="comment"># 清空链中规则</span></span><br><span class="line">    -P:      			<span class="comment"># 设定默认策略</span></span><br><span class="line">        iptables -t filter -P INPUT &#123;DROP|AEECPT&#125;</span><br><span class="line">    -N:      			<span class="comment"># 新建一条自定义链</span></span><br><span class="line">        iptables -N FILTER_WEB</span><br><span class="line">    -X:      			<span class="comment"># 删除自定义的空链</span></span><br><span class="line">    -Z:      			<span class="comment"># 计算器清零</span></span><br><span class="line">        iptables -Z</span><br><span class="line">    -E:      			<span class="comment"># 重命名自定义链</span></span><br><span class="line">管理规则:</span><br><span class="line">    -A:      			<span class="comment"># 附加</span></span><br><span class="line">    -I [n]:  			<span class="comment"># 插入到第n条</span></span><br><span class="line">    -D [n]:  			<span class="comment"># 删除第n条规则</span></span><br><span class="line">    -R [n]:  			<span class="comment"># 替换第n条规则</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><figcaption><span>iptables 语法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">iptables [-t 表] 大写选项子命令 [规则号] 链名 匹配标准 -j 目标</span><br><span class="line">    目标:(也可以是自定义链)</span><br><span class="line">        DROP:   		<span class="comment"># 丢弃</span></span><br><span class="line">        REJECT: 		<span class="comment"># 拒绝</span></span><br><span class="line">        ACCEPT: 		<span class="comment"># 接受</span></span><br><span class="line">        RETURN: 		<span class="comment"># 由自定义链返回主链</span></span><br><span class="line">        REDIRECT:   		<span class="comment"># 端口重定向</span></span><br><span class="line">        DNAT:       		<span class="comment"># 目标地址转换</span></span><br><span class="line">        SNAT:       		<span class="comment"># 源地址转换</span></span><br><span class="line">        LOG:        		<span class="comment"># 查看记录日志</span></span><br><span class="line">        MARK:       		<span class="comment"># 打防火墙标记</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><figcaption><span>标准匹配: 通用匹配</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">通用匹配</span><br><span class="line">    <span class="comment"># s 源地址</span></span><br><span class="line">    -s|--src|--<span class="built_in">source</span> [!] IP		<span class="comment"># ! 指反选</span></span><br><span class="line">    <span class="comment"># d 目标地址</span></span><br><span class="line">    -d|--dst|--destination [!] IP/NETWORK</span><br><span class="line">        例: iptables -t filter -A INPUT -s 172.16.0.0/16 -d 172.16.100.100 -j ACCEPT</span><br><span class="line">        </span><br><span class="line">    -i  incoming_interface: 指定数据包流入接口    [INPUT PREROURTING FORWARD]</span><br><span class="line">        例: iptables -R INPUT 1 -s 172.16.0.0/16 -d 172.16.100.100 -i eth0 -j ACCEPT</span><br><span class="line">        </span><br><span class="line">    -o  outing_interface: 指定数据包流出接口  [OUTPUT POSTROUTING FORWARD]</span><br><span class="line">    <span class="comment"># p 协议</span></span><br><span class="line">    -p  (tcp|udp|icmp)</span><br><span class="line">        例: iptables -R INPUT 1 -s 172.16.0.0/16 -d 172.16.100.100 -i eth0 -p tcp -j ACCEPT</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><figcaption><span>标准匹配: 扩展匹配_隐含扩展</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">扩展匹配: 要使用<span class="string">"-m 扩展名称"</span>来引用,而每个扩展模块一般都会有自己特有的专用选项;这些选项有些是必备的</span><br><span class="line">    隐含扩展: (使用时不用使用-m指定,但可以使用)(隐含扩展就是对3种协议使用-p指定以后,不再使用-m这种方式指定的一种称呼)</span><br><span class="line">        -p tcp</span><br><span class="line">          --sport 21-25|80,90 或者 --sport ! 22		<span class="comment"># 21-25连续端口|80,90不连续端口</span></span><br><span class="line">          --dport</span><br><span class="line">          --tcp-flags 要检查的标志 必须为1的标记</span><br><span class="line">            --tcp-flages SYN,ACK,RST,FIN SYN		<span class="comment"># 检查SYN,ACK,RST,FIN标志位,但SYN为1</span></span><br><span class="line">            --tcp-flages ALL NONE			<span class="comment"># 所有标志位都检查,但所有都为0</span></span><br><span class="line">            --syn</span><br><span class="line"></span><br><span class="line">        	例: 放行本机对web服务的访问</span><br><span class="line">        	    iptables -A INPUT -d 172.16.100.100 -p tcp --dport 80 -j ACCEPT</span><br><span class="line">        	    iptables -A OUTPUT -s 172.16.100.100 -p tcp --sport 80 -j ACCEPT</span><br><span class="line">        	例: 放行22服务端口</span><br><span class="line">        	    iptables -I INPUT 1 -s 172.16.0.0/16 -d 172.16.100.100 -p tcp --dport 22 -j ACCEPT</span><br><span class="line">        	    iptables -D INPUT 2</span><br><span class="line">        -p udp  <span class="comment"># udp只有端口匹配,没有其它扩展</span></span><br><span class="line">        	--sport</span><br><span class="line">            --dport</span><br><span class="line">        	例: 本机DNS服务器, 要为本地客户端做递归解析 iptables的INPUT, OUTPUT默认为DROP,本机地址: 172.16.100.100</span><br><span class="line">        	    <span class="comment"># 别人响应自己(自己请求别人)</span></span><br><span class="line">        	    iptables -A OUTPUT -s 172.16.100.100 -p udp --sport 53 -j ACCEPT</span><br><span class="line">        	    iptables -A INPUT -d 172.16.100.100 -p udp --dport 53 -j ACCEPT</span><br><span class="line">        	    <span class="comment"># 自己响应别人(被别人请求我)</span></span><br><span class="line">        	    iptables -A INPUT -d 172.16.100.100 -p udp --dport 53 -j ACCEPT</span><br><span class="line">        	    iptables -A OUTPUT -s 172.16.100.100 -p udp --sport 53 -j ACCEPT</span><br><span class="line">        -p icmp</span><br><span class="line">        	--icmp-type</span><br><span class="line">            	请求: 8</span><br><span class="line">            	响应: 0</span><br><span class="line">        	例: ping作为客户端和作为服务端的区别(自己ping别人和别人ping自己的区别)</span><br><span class="line">        	    <span class="comment"># 自己ping别人</span></span><br><span class="line">        	    iptables -A OUTPUT -s 172.16.100.100 -d 172.16.0.0/16 -p icmp --icmp-type 8 -j ACCEPT</span><br><span class="line">        	    iptables -A INPUT -s 172.16.0.0/16 -d 172.16.100.100 -p -icmp --icmp-type 0 -j ACCEPT</span><br><span class="line">        	    <span class="comment"># 别人ping自己</span></span><br><span class="line">        	    iptables -A INPUT -s 172.16.0.0/16 -d 172.16.100.100 -p icmp --icmp-type 8 -j ACCEPT</span><br><span class="line">        	    iptables -A OUTPUT -s 172.16.100.100 -d 172.16.0.0/16 -p icmp --icmp-type 0 -j ACCEPT</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><figcaption><span>标准匹配: 扩展匹配_显示扩展</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">显示扩展: (使用时一定要使用-m指定)</span><br><span class="line">	-m state --state 				<span class="comment"># 指定状态(state),常用选项(--state)</span></span><br><span class="line">    	NEW, ESTABLISHED, RELATED, INVALID</span><br><span class="line">        	-m state --state INVALID		<span class="comment"># 非法的,无法识别的连接(所有标志位都为0和1的,都为无法识别的连接)</span></span><br><span class="line">            -m state --state RELATED			<span class="comment"># 所有的数据连接跟此前的命令连接,建立过关系的</span></span><br><span class="line">                iptables -I INPUT 1 -s 172.16.0.0/16 -d 172.16.100.100 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT</span><br><span class="line">                iptables -I OUTPUT 1 -s 172.16.100.100 -d 172.16.0.0/16 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># 状态检测</span></span><br><span class="line">            iptables -A INPUT -s 172.16.0.0/16 -p tcp --dport 21 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT</span><br><span class="line">            iptables -R OUTPUT 2 -s 172.16.100.100 -m state --state ESTABLISHED,RELATED -j ACCEPT</span><br><span class="line">        <span class="comment"># 多端口匹配</span></span><br><span class="line">        -m multiport (可以指定15个以内的非连续端口)</span><br><span class="line">            --<span class="built_in">source</span>-ports				<span class="comment"># 匹配源端口</span></span><br><span class="line">            --destination-ports				<span class="comment"># 匹配目标端口</span></span><br><span class="line">            --ports					<span class="comment"># 不分源和目标</span></span><br><span class="line">                iptables -I INPUT 2 -s 172.16.0.0/16 -d 172.16.100.100 -p tcp -m state --state NEW -m multiport --destination-ports 22,80 -j ACCEPT</span><br><span class="line">        -m iprange (指定IP范围[172.16.100.1-172.16.100.100])</span><br><span class="line">            --src-range</span><br><span class="line">            --dst-range</span><br><span class="line">        -m <span class="built_in">limit</span> (速率匹配)</span><br><span class="line">            --<span class="built_in">limit</span> 20/min				<span class="comment"># 每分钟多少个请求进来</span></span><br><span class="line">            --<span class="built_in">limit</span>-burst 2				<span class="comment"># 每一个批次多少个请求进来</span></span><br><span class="line">                <span class="comment"># ping的请求每分钟20个,每一个批次只允许5个进来</span></span><br><span class="line">                iptables -I INPUT 2 -s 172.16.0.0/16 -d 172.16.100.100 -p -icmp --icmp-type 8 -m <span class="built_in">limit</span> 20/min --<span class="built_in">limit</span>-burst 5 -j ACCEPT</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>保持规则与导入规则<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存规则</span></span><br><span class="line">service iptables save</span><br><span class="line">iptables-save &gt; /etc/sysconfig/iptables</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从备份规则文件导入配置</span></span><br><span class="line">iptables-restore &lt; /path/to/iptables.rules</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6>
-    
-
-    
-
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          Patrick
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="https://www.inadm.com/2019/06/10/iptables-防火墙/" title="iptables 防火墙" target="_blank">https://www.inadm.com/2019/06/10/iptables-防火墙/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
+        <div class="article-info info-on-right">
           
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -332,116 +250,23 @@
 		</ul>
 	</div>
 
-    
+          
 
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://www.inadm.com/2019/06/10/iptables-%E9%98%B2%E7%81%AB%E5%A2%99/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
-  
-    <a href="/2019/06/15/perccli/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          perccli 戴尔服务器管理工具
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/06/08/command/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">command 基础命令</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2019/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
 
 
           </div>
@@ -482,8 +307,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
