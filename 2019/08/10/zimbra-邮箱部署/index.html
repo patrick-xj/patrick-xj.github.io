@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://www.inadm.com/images/pasted-42.png">
 <meta property="og:image" content="https://www.inadm.com/images/pasted-66.png">
 <meta property="article:published_time" content="2019-08-09T21:08:20.000Z">
-<meta property="article:modified_time" content="2021-04-26T11:31:05.642Z">
+<meta property="article:modified_time" content="2021-04-28T10:58:44.081Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Linux-service">
 <meta name="twitter:card" content="summary">
@@ -251,7 +251,7 @@
 <ol>
 <li><strong>zimbra 安装前准备</strong></li>
 </ol>
-<figure class="highlight bash"><figcaption><span>系统环境准备</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop iptables						<span class="comment"># 部署前建议先关闭防火墙以免影响部署顺利执行</span></span><br><span class="line">systemctl stop postfix &amp;&amp; systemctl <span class="built_in">disable</span> postfix		<span class="comment"># 关闭系统自带e-mail</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># DNS配置</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"Lan_IP    	 DomianName.com Mail.DomianName.com"</span> &gt;&gt; /etc/hosts</span><br><span class="line">sed -i <span class="string">'1i nameserver 127.0.0.1'</span> /etc/resolv.conf</span><br><span class="line"></span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname Top_DomianName.com</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>系统环境准备</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop iptables						<span class="comment"># 部署前建议先关闭防火墙以免影响部署顺利执行</span></span><br><span class="line">systemctl stop postfix &amp;&amp; systemctl <span class="built_in">disable</span> postfix		<span class="comment"># 关闭系统自带e-mail</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># DNS配置</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"Lan_IP    	 DomianName.com Mail.DomianName.com"</span> &gt;&gt; /etc/hosts</span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"127.0.0.1    	 DomianName.com Mail.DomianName.com"</span> &gt;&gt; /etc/hosts</span><br><span class="line"></span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname Top_DomianName.com</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>解析配置</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MX	10	@		TOP_DOMAIN.COM</span><br><span class="line">A		@		WAN_IP				<span class="comment"># 配置反解析</span></span><br><span class="line">A		MAIL		WAN_IP</span><br><span class="line"></span><br><span class="line"><span class="comment"># dig Top_DomianName.com MX +short          			# 检查MX解析是否生效和正常</span></span><br></pre></td></tr></table></figure>
 
 <h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><ol start="2">
@@ -558,11 +558,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Server</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">Server</a>
               </li>
              
               <li class="article-tag-list-item">
