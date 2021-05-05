@@ -18,7 +18,7 @@
 <meta property="og:description" content="收录和整理一些基础的常用的比较重的一些命令">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-06-07T23:39:05.000Z">
-<meta property="article:modified_time" content="2020-07-14T08:08:01.000Z">
+<meta property="article:modified_time" content="2021-05-05T16:34:10.527Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Linux-base">
 <meta name="twitter:card" content="summary">
@@ -223,9 +223,17 @@
 
   
   
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
 <a href="/2019/06/08/command/" class="archive-article-date">
         <time datetime="2019-06-07T23:39:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-08</time>
 </a>
+<span id="busuanzi_container_page_pv">  本文总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+
 
   
   
@@ -235,8 +243,10 @@
     
     <ul>
 <li><strong>收录和整理一些基础的常用的比较重的一些命令</strong><h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
+
 </li>
 </ul>
+<p>一、xxxx</p>
 <ol>
 <li><p>CentOS 7 root密码修改</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.  重启系统</span><br><span class="line">2.  按方向键<span class="string">'上下键'</span>选择上面选项按e</span><br><span class="line">3.  在linux16这行处的en_US.UTF-8后面1个空格后输入rd.break console=tty0</span><br><span class="line">4.  按Ctrl+x会自动重启进入字符界面</span><br><span class="line">5.  mount -o remount,rw /sysroot				<span class="comment"># 以读写方式重新挂载根系统</span></span><br><span class="line">6.  chroot /sysroot</span><br><span class="line">7.  <span class="built_in">echo</span> <span class="string">'123456'</span>|passwd --stdin root	</span><br><span class="line">8.  touch /.autorelabel						<span class="comment"># 创建遗忘文件</span></span><br><span class="line">9.  <span class="built_in">exit</span>							<span class="comment"># 退出根系统</span></span><br><span class="line">10. reboot</span><br></pre></td></tr></table></figure>
@@ -401,6 +411,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
