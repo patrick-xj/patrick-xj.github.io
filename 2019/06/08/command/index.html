@@ -18,7 +18,7 @@
 <meta property="og:description" content="收录和整理一些基础的常用的比较重的一些命令">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-06-07T23:39:05.000Z">
-<meta property="article:modified_time" content="2021-05-05T16:34:10.527Z">
+<meta property="article:modified_time" content="2021-05-05T16:56:01.951Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Linux-base">
 <meta name="twitter:card" content="summary">
@@ -271,9 +271,11 @@
 <li><p>排序命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">uniq:只能取出排好序的</span><br><span class="line">    -c            统计每行重复的次数</span><br><span class="line">    -u            打印未重复的行;重复的行不打印</span><br><span class="line">    -d            只打印重复过的行;不重复的行不打印</span><br><span class="line">    -t            指定分隔符代替非空格到空格的转换</span><br><span class="line">    -t:           <span class="string">":"</span>为分隔符</span><br><span class="line">    -k            位置，结合-t一起使用</span><br><span class="line">    -t: -k3       截取第三个</span><br><span class="line"></span><br><span class="line">sort:排序</span><br><span class="line">    -f：忽略字符大小写</span><br><span class="line">    -n：以数值大小进行排序</span><br><span class="line">    -r：降序;默认升序</span><br><span class="line">    -R：随机排序</span><br><span class="line">    -u：只保留重复的行一行;原只有一行的同时打印出来</span><br><span class="line">    -k：取指定列</span><br></pre></td></tr></table></figure></li>
 <li><p>ping 相关命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc                                    <span class="comment"># 依赖gcc</span></span><br><span class="line">wget http://fping.org/dist/fping-3.10.tar.gz          <span class="comment"># 3.10 version</span></span><br><span class="line">tar -xf fping-3.10.tar.gz</span><br><span class="line"><span class="built_in">cd</span> fping-3.10/</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"><span class="comment"># # # # # # </span></span><br><span class="line">ping</span><br><span class="line">    -c x			<span class="comment"># 指定多少个数据包</span></span><br><span class="line">    -W x			<span class="comment"># 等待指定时间后停止ping程序的执行。当试图测试不可达主机时此选项很有用，时间单位是秒。</span></span><br><span class="line">    -i x			<span class="comment"># 指定发送数据包时间间隔</span></span><br></pre></td></tr></table></figure></li>
-</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc                                    <span class="comment"># 依赖gcc</span></span><br><span class="line">wget http://fping.org/dist/fping-3.10.tar.gz          <span class="comment"># 3.10 version</span></span><br><span class="line">tar -xf fping-3.10.tar.gz</span><br><span class="line"><span class="built_in">cd</span> fping-3.10/</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"><span class="comment"># # # # # # </span></span><br><span class="line">ping</span><br><span class="line">    -c x			<span class="comment"># 指定多少个数据包</span></span><br><span class="line">    -W x			<span class="comment"># 等待指定时间后停止ping程序的执行。当试图测试不可达主机时此选项很有用，时间单位是秒。</span></span><br><span class="line">    -i x			<span class="comment"># 指定发送数据包时间间隔</span></span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
+<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6>
     
 
     
@@ -418,7 +420,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-1"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li></ol>
                     </div>
                 </span>
             </div>
