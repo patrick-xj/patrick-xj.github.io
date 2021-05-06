@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.inadm.com/images/pasted-0.png">
 <meta property="article:published_time" content="2019-10-29T16:48:44.000Z">
-<meta property="article:modified_time" content="2020-10-03T05:38:05.000Z">
+<meta property="article:modified_time" content="2021-05-06T15:52:03.113Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Linux-service">
 <meta name="twitter:card" content="summary">
@@ -245,10 +245,9 @@
     <ul>
 <li><strong>CuteHttpFileServer/chfs是一个免费的、HTTP协议的文件共享服务器，使用浏览器可以快速访问</strong></li>
 </ul>
-<h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
+<a id="more"></a>
 
-<ul>
-<li><strong>具有以下特点 [<a href="http://iscute.cn/chfs" target="_blank" rel="noopener">官方网站</a>]</strong><ul>
+<h4 id="CHFS具有以下特点-官方网站"><a href="#CHFS具有以下特点-官方网站" class="headerlink" title="CHFS具有以下特点 [官方网站]"></a><strong>CHFS具有以下特点 [<a href="http://iscute.cn/chfs" target="_blank" rel="noopener">官方网站</a>]</strong></h4><ul>
 <li>单个文件，核心功能无需其他文件</li>
 <li>跨平台运行，支持主流平台：Windows，Linux和Mac</li>
 <li>界面简洁，简单易用</li>
@@ -257,30 +256,21 @@
 <li>支持快速分享文字片段</li>
 <li>支持webdav协议</li>
 </ul>
-</li>
-</ul>
-<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><ul>
-<li><strong>CHFS For Linux 安装</strong><figure class="highlight bash"><figcaption><span>安装准备及下载包文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum -y install unzip wget</span><br><span class="line">mkdir -p chfs-linux /usr/<span class="built_in">local</span>/chfs /data/&#123;logs/chfs,chfs&#125; /data/chfs/&#123;files,images,scripts,packges&#125;</span><br><span class="line">    <span class="comment"># chfs-linux 安装前准备文件目录</span></span><br><span class="line">    <span class="comment"># /data/chfs 程序目录; /data/logs/chfs 日志文件目录</span></span><br><span class="line">    <span class="comment"># /data/chfs/&#123;files,images,scripts,packges&#125; 共享目录</span></span><br><span class="line">wget http://iscute.cn/tar/chfs/2.0/chfs-linux-amd64-2.0.zip			<span class="comment"># 最新包文件</span></span><br><span class="line">unzip chfs-linux-amd64-2.0.zip -d chfs-linux</span><br><span class="line">chmod +x chfs-linux/chfs &amp;&amp; mv chfs-linux/chfs /usr/<span class="built_in">local</span>/chfs/</span><br></pre></td></tr></table></figure>
+<h4 id="CHFS-For-Linux-安装"><a href="#CHFS-For-Linux-安装" class="headerlink" title="CHFS For Linux 安装"></a><strong>CHFS For Linux 安装</strong></h4><figure class="highlight bash"><figcaption><span>安装准备及下载包文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum -y install unzip wget</span><br><span class="line">mkdir -p chfs-linux /usr/<span class="built_in">local</span>/chfs /data/&#123;logs/chfs,chfs&#125; /data/chfs/&#123;files,images,scripts,packges&#125;</span><br><span class="line">    <span class="comment"># chfs-linux 安装前准备文件目录</span></span><br><span class="line">    <span class="comment"># /data/chfs 程序目录; /data/logs/chfs 日志文件目录</span></span><br><span class="line">    <span class="comment"># /data/chfs/&#123;files,images,scripts,packges&#125; 共享目录</span></span><br><span class="line">wget http://iscute.cn/tar/chfs/2.0/chfs-linux-amd64-2.0.zip			<span class="comment"># 最新包文件</span></span><br><span class="line">unzip chfs-linux-amd64-2.0.zip -d chfs-linux</span><br><span class="line">chmod +x chfs-linux/chfs &amp;&amp; mv chfs-linux/chfs /usr/<span class="built_in">local</span>/chfs/</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h6 id="-2"><a href="#-2" class="headerlink" title=""></a></h6><ul>
-<li><strong>CHFS 主配置文件</strong><ul>
+
+<h4 id="CHFS-主配置文件"><a href="#CHFS-主配置文件" class="headerlink" title="CHFS 主配置文件"></a><strong>CHFS 主配置文件</strong></h4><ul>
 <li><strong><a href="https://github.com/fcwys/chfs-linux.git" target="_blank" rel="noopener">参阅配置文档</a></strong></li>
-</ul>
-</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &gt; /usr/local/chfs/config.conf &lt;&lt; _EOF_</span></span><br><span class="line">port=80</span><br><span class="line">path=<span class="string">"/data/chfs/files|/data/chfs/images|/data/chfs/scripts|/data/chfs/packges"</span></span><br><span class="line">allow=</span><br><span class="line"><span class="built_in">log</span>=/data/logs/chfs/</span><br><span class="line">html.title=Web File Server</span><br><span class="line">html.notice=内部资料!!!</span><br><span class="line">image.preview=<span class="literal">false</span></span><br><span class="line">ssl.cert=</span><br><span class="line">ssl.key=</span><br><span class="line">folder.leaf.download=<span class="literal">false</span></span><br><span class="line">session.timeout=30</span><br><span class="line">rule=::</span><br><span class="line">rule=sa01:123456:RWD</span><br><span class="line">rule=dev01:123456:RWD</span><br><span class="line">_EOF_</span><br></pre></td></tr></table></figure>
 
-<h6 id="-3"><a href="#-3" class="headerlink" title=""></a></h6><ul>
-<li><strong>CHFS Service启动文件</strong><figure class="highlight bash"><figcaption><span>服务启动文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &gt; /usr/lib/systemd/system/chfs.service &lt;&lt; _EOF_</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=CHFS Service</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=root</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5s</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/chfs/chfs --file=/usr/<span class="built_in">local</span>/chfs/config.conf</span><br><span class="line">TimeoutStopSec=0</span><br><span class="line">KillSignal=SIGTERM</span><br><span class="line">SendSIGKILL=no</span><br><span class="line">SuccessExitStatus=0</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">_EOF_</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h6 id="-4"><a href="#-4" class="headerlink" title=""></a></h6><ul>
-<li><strong>启服务,验证</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start chfs &amp;&amp; systemctl <span class="built_in">enable</span> chfs</span><br><span class="line">netstat -nlput|grep 80</span><br></pre></td></tr></table></figure>
-<a href="http://ip_address" target="_blank" rel="noopener">http://ip_address</a><br><img src="/images/pasted-0.png" alt="upload successful"><h6 id="-5"><a href="#-5" class="headerlink" title=""></a></h6></li>
-</ul>
+
+<h4 id="CHFS-Service启动文件"><a href="#CHFS-Service启动文件" class="headerlink" title="CHFS Service启动文件"></a><strong>CHFS Service启动文件</strong></h4><figure class="highlight bash"><figcaption><span>服务启动文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &gt; /usr/lib/systemd/system/chfs.service &lt;&lt; _EOF_</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=CHFS Service</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=root</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5s</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/chfs/chfs --file=/usr/<span class="built_in">local</span>/chfs/config.conf</span><br><span class="line">TimeoutStopSec=0</span><br><span class="line">KillSignal=SIGTERM</span><br><span class="line">SendSIGKILL=no</span><br><span class="line">SuccessExitStatus=0</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">_EOF_</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="启服务-验证"><a href="#启服务-验证" class="headerlink" title="启服务,验证"></a><strong>启服务,验证</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start chfs &amp;&amp; systemctl <span class="built_in">enable</span> chfs</span><br><span class="line">netstat -nlput|grep 80</span><br></pre></td></tr></table></figure>
+<p><a href="http://ip_address" target="_blank" rel="noopener">http://ip_address</a><br><img src="/images/pasted-0.png" alt="upload successful"></p>
 
     
 
@@ -426,7 +416,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-1"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-2"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-3"><span class="toc-number">4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-4"><span class="toc-number">5.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-5"><span class="toc-number">6.</span> <span class="toc-text"></span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#CHFS具有以下特点-官方网站"><span class="toc-number">1.</span> <span class="toc-text">CHFS具有以下特点 [官方网站]</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CHFS-For-Linux-安装"><span class="toc-number">2.</span> <span class="toc-text">CHFS For Linux 安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CHFS-主配置文件"><span class="toc-number">3.</span> <span class="toc-text">CHFS 主配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CHFS-Service启动文件"><span class="toc-number">4.</span> <span class="toc-text">CHFS Service启动文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启服务-验证"><span class="toc-number">5.</span> <span class="toc-text">启服务,验证</span></a></li></ol>
                     </div>
                 </span>
             </div>

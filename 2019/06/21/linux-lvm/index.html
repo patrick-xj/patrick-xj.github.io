@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://www.inadm.com/images/pasted-3.png">
 <meta property="og:image" content="https://www.inadm.com/images/pasted-51.png">
 <meta property="article:published_time" content="2019-06-20T23:20:16.000Z">
-<meta property="article:modified_time" content="2020-09-07T07:30:25.000Z">
+<meta property="article:modified_time" content="2021-05-06T15:20:53.849Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Server">
 <meta name="twitter:card" content="summary">
@@ -252,7 +252,7 @@
 </ul>
 </li>
 </ul>
-<h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
+<a id="more"></a>
 
 
 <figure class="highlight bash"><figcaption><span>lvm 卷类型</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    PV 		<span class="comment"># 物理卷</span></span><br><span class="line">    VG		<span class="comment"># 卷组</span></span><br><span class="line">    LV		<span class="comment"># 逻辑卷</span></span><br><span class="line">    PE		<span class="comment"># 物理盘区,默认大小4.00 MiB</span></span><br><span class="line">    LE		<span class="comment"># 逻辑盘区</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># lvm 创建顺序和缩减顺序</span></span><br><span class="line">创建顺序：PV——&gt;VG——&gt;LV</span><br><span class="line">缩减顺序：LV——&gt;VG——&gt;PV</span><br></pre></td></tr></table></figure>
@@ -317,14 +317,14 @@
 </tbody></table>
 <figure class="highlight bash"><figcaption><span>命令选项介绍</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">例: lvcreate -L +SIZE(K、M、G、T) /dev/CentOS7_VGName/lvname</span><br><span class="line">    <span class="comment"># +SIZE	"+"表示扩展多少！！！</span></span><br><span class="line">    <span class="comment"># SIZE	不带"+"表示扩展到多少SIZE！！！</span></span><br><span class="line">    <span class="comment"># -L 大写,表示使用扩展到多少SIZE,使用单位(K、M、G、T)</span></span><br><span class="line">    <span class="comment"># -l 小写,表示使用PE数量(默认扩展,推荐使用方法)</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><ol start="2">
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6><ol start="2">
 <li>创建 PV—&gt;VG—&gt;LV 并格式化后挂载为数据盘</li>
 </ol>
 <figure class="highlight bash"><figcaption><span>整盘创建lv</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lsblk							<span class="comment"># 查看磁盘信息</span></span><br><span class="line">pvcreate /dev/sd&#123;b,c&#125;					<span class="comment"># 创建pv</span></span><br><span class="line">vgcreate CentOS7_VGName /dev/sd&#123;b,c&#125;			<span class="comment"># 创建vg</span></span><br><span class="line">vgdisplay CentOS7_VGName|awk <span class="string">'/Total PE/&#123;print $3&#125;'</span>	<span class="comment"># 获取PE总数</span></span><br><span class="line">lvcreate -l 38398 -n lvname CentOS7_VGName		<span class="comment"># 创建lv</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>挂载磁盘</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用UUID方式挂在磁盘</span></span><br><span class="line">mkfs.xfs -f /dev/CentOS7_VGName/lvname				<span class="comment"># [1]格式化lv为xfs</span></span><br><span class="line">mkfs.ext4 /dev/CentOS7_VGName/lvname				<span class="comment"># [2]格式化lv为ext4</span></span><br><span class="line">blkid /dev/CentOS7_VGName/lvname |awk -F \" <span class="string">'&#123;print $2&#125;'</span>	<span class="comment"># 获取uuid</span></span><br><span class="line"><span class="comment"># 写入fstab</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"UUID=e0c284c9-9b15-4623-a434-65a162d158f1 /data                    xfs    defaults        0 0"</span> &gt;&gt; /etc/fstab</span><br><span class="line">[ ! -d /data ] &amp;&amp; &#123; mkdir /data;&#125; &amp;&amp; mount -a			<span class="comment"># 挂载到"/data"目录</span></span><br></pre></td></tr></table></figure>
 <p><img src="/images/pasted-1.png" alt="upload successful"></p>
 <p><img src="/images/pasted-2.png" alt="upload successful"></p>
-<h6 id="-2"><a href="#-2" class="headerlink" title=""></a></h6><ol start="3">
+<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><ol start="3">
 <li>新增独立磁盘,扩展VG、LV</li>
 </ol>
 <figure class="highlight bash"><figcaption><span>扩展vg</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lsblk							<span class="comment"># 查看新增磁盘盘符信息</span></span><br><span class="line">pvcreate /dev/sdd					<span class="comment"># 创建pv</span></span><br><span class="line">vgs							<span class="comment"># 查看vg未扩展前信息</span></span><br><span class="line">vgextend CentOS7_VGName /dev/sdd			<span class="comment"># 新增pv到vg中</span></span><br><span class="line">vgs							<span class="comment"># 查看vg新增后信息</span></span><br></pre></td></tr></table></figure>
@@ -332,27 +332,27 @@
 <figure class="highlight bash"><figcaption><span>扩展lv</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lvs							<span class="comment"># 查看lv未扩展前信息</span></span><br><span class="line">vgdisplay CentOS7_VGName|awk <span class="string">'/Total PE/&#123;print $3&#125;'</span>	<span class="comment"># 获取PE总数量</span></span><br><span class="line">lvextend -l 51197 /dev/CentOS7_VGName/lvname		<span class="comment"># 扩展lv</span></span><br><span class="line">lvs							<span class="comment"># 查看lv扩展后信息</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>扩展文件系统</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xfs_growfs /dev/CentOS7_VGName/lvname			<span class="comment"># [1]xfs格式扩展文件系统方式</span></span><br><span class="line">resize2fs /dev/CentOS7_VGName/lvname			<span class="comment"># [2]ext4格式扩展文件系统方式</span></span><br><span class="line">e2fsck -f /dev/CentOS7_VGName/lvname			<span class="comment"># 检测磁盘</span></span><br></pre></td></tr></table></figure>
 <p><img src="/images/pasted-3.png" alt="upload successful"></p>
-<h6 id="-3"><a href="#-3" class="headerlink" title=""></a></h6><ol start="4">
+<h6 id="-2"><a href="#-2" class="headerlink" title=""></a></h6><ol start="4">
 <li>原有磁盘上,扩展PV、LV</li>
 </ol>
 <figure class="highlight bash"><figcaption><span>vm原有磁盘上追加磁盘空间后,需重启vm才能查看到追加的空间</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /dev/sdb 原有基础上增加50G</span></span><br><span class="line">pvresize /dev/sdb					<span class="comment"># 将增加的50G空间更新到pv</span></span><br><span class="line">vgdisplay CentOS7_VGName|awk <span class="string">'/Total PE/&#123;print $3&#125;'</span>	<span class="comment"># sdb已经在vg组中无需vgextend</span></span><br><span class="line">lvextend -l 63997 /dev/CentOS7_VGName/lvname		<span class="comment"># 扩展lv</span></span><br><span class="line">xfs_growfs /dev/CentOS7_VGName/lvname			<span class="comment"># 更新文件系统</span></span><br></pre></td></tr></table></figure>
 <p><img src="/images/pasted-51.png" alt="upload successful"></p>
-<h6 id="-4"><a href="#-4" class="headerlink" title=""></a></h6><ol start="5">
+<h6 id="-3"><a href="#-3" class="headerlink" title=""></a></h6><ol start="5">
 <li>缩减LV</li>
 </ol>
 <figure class="highlight bash"><figcaption><span>缩减lv</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># xfs格式不支持缩减</span></span><br><span class="line"><span class="comment"># 以下为ext4缩减</span></span><br><span class="line">e2fsck -f /dev/CentOS7_VGName/lvname			<span class="comment"># 缩减前,强烈建议检测一次,检查是否有磁盘错误</span></span><br><span class="line">umount /data						<span class="comment"># 缩减需要卸载挂载</span></span><br><span class="line">resize2fs /dev/CentOS7_VGName/lvname +51G		<span class="comment"># 缩减逻辑边界;缩减51G</span></span><br><span class="line">e2fsck -f /dev/CentOS7_VGName/lvname			<span class="comment"># 强制检测</span></span><br><span class="line">lvreduce -L -51G /dev/CentOS7_VGName/lvname		<span class="comment"># lv减小51G</span></span><br><span class="line">e2fsck -f /dev/CentOS7_VGName/lvname			<span class="comment"># 检测磁盘</span></span><br><span class="line">lvs							<span class="comment"># 查看lv大小</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="-5"><a href="#-5" class="headerlink" title=""></a></h6><ol start="6">
+<h6 id="-4"><a href="#-4" class="headerlink" title=""></a></h6><ol start="6">
 <li>缩减VG</li>
 </ol>
 <figure class="highlight bash"><figcaption><span>vg缩减</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vgs							<span class="comment"># 查看vg缩减前信息</span></span><br><span class="line">pvmove /dev/sdb /dev/sdd				<span class="comment"># 将sdb盘数据迁移到sdd盘</span></span><br><span class="line">vgreduce CentOS7_VGName /dev/sdb			<span class="comment"># 将sdb移除vg</span></span><br><span class="line">vgs							<span class="comment"># 查看vg缩减后信息</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="-6"><a href="#-6" class="headerlink" title=""></a></h6><ol start="7">
+<h6 id="-5"><a href="#-5" class="headerlink" title=""></a></h6><ol start="7">
 <li>删除</li>
 </ol>
 <figure class="highlight bash"><figcaption><span>lv/vg/pv 删除</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lv 磁盘上无数据情况下,可直接删除</span></span><br><span class="line">lvremove /dev/CentOS7_VGName/lvname</span><br><span class="line">vgremove CentOS7_VGName</span><br><span class="line">pvremove /dev/sd&#123;b,c,d&#125;</span><br></pre></td></tr></table></figure>
 
-<h6 id="-7"><a href="#-7" class="headerlink" title=""></a></h6>
+<h6 id="-6"><a href="#-6" class="headerlink" title=""></a></h6>
     
 
     
@@ -489,19 +489,6 @@
             </div>
         </div>
         
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-1"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-2"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-3"><span class="toc-number">4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-4"><span class="toc-number">5.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-5"><span class="toc-number">6.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-6"><span class="toc-number">7.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-7"><span class="toc-number">8.</span> <span class="toc-text"></span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
         
     </div>
 </aside>

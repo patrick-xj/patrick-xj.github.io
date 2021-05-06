@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://www.inadm.com/images/pasted-58.png">
 <meta property="og:image" content="https://www.inadm.com/images/pasted-59.png">
 <meta property="article:published_time" content="2019-12-08T13:35:15.000Z">
-<meta property="article:modified_time" content="2020-12-28T17:40:17.000Z">
+<meta property="article:modified_time" content="2021-05-06T15:18:23.555Z">
 <meta property="article:author" content="Patrick">
 <meta property="article:tag" content="Linux-service">
 <meta name="twitter:card" content="summary">
@@ -255,7 +255,7 @@
 </li>
 </ul>
 <p><font size=2>当企业服务器达到一定规模后又需要考虑安全问题时,隔离外网必不可少。但是隔离外网后,各服务器本地时间同步又会存在校准问题。<br>  如果Linux各服务器之间时间不同步,通信必然存在故障。此时部署机房内部时间服务器必不可少。</font></p>
-<h6 id=""><a href="#" class="headerlink" title=""></a></h6><a id="more"></a>
+<a id="more"></a>
 
 <p>1.1 <strong>部署环境</strong></p>
 <figure class="highlight bash"><figcaption><span>部署基础环境</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. centos 7 os</span><br><span class="line">2. domain: ntp.inadm.com</span><br><span class="line">3. ntp_server: 172.16.10.100</span><br><span class="line">4. ntp_client: 172.16.10.200</span><br></pre></td></tr></table></figure>
@@ -286,7 +286,7 @@
 
 <figure class="highlight bash"><figcaption><span>timedatectl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># timedatectl</span></span><br><span class="line">// NTP enabled: yes			<span class="comment"># 表示是否开机自启了</span></span><br><span class="line">// NTP synchronized: yes		<span class="comment"># 系统时间同步完成,状态会变为yes</span></span><br></pre></td></tr></table></figure>
 <p><img src="/images/pasted-59.png" alt="upload successful"></p>
-<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6>
     
 
     
@@ -423,19 +423,6 @@
             </div>
         </div>
         
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#-1"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
         
     </div>
 </aside>
